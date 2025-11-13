@@ -29,7 +29,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         setTitle("Firefigher Game");
         setSize(800,600);
-        setDefaultCloseOperation(JFrame.ExitOnClose);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
         cardLayout = new CardLayout();

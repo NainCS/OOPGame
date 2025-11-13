@@ -9,14 +9,14 @@ package Section1;
  * @author Sam SY
  */
 public class GameController {
-    MainFrame frame;
+    MainFrame mainFrame;
     Player player;
     ScoreManager scoreManager;
 
     public GameController(MainFrame frame) {
         this.mainFrame = frame;
         player = new Player();
-        scoreManager = new ScoreManager;
+        scoreManager = new ScoreManager();
     }
     
     public void startGame(){

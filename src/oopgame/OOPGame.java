@@ -4,6 +4,9 @@
  */
 package oopgame;
 
+import Section1.MainFrame;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author Owner
@@ -15,6 +18,9 @@ public class OOPGame {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        SwingUtilities.invokeLater(()->{
+            new MainFrame();
+        });
     }
     
 }

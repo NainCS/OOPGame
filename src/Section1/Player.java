@@ -29,7 +29,7 @@ public class Player implements Controllable, Scorable, Displayable{
         return false;
     }
     
-    public void moveUp(){waterCapacity = maxWaterCapacity;}
+    public void refillWater(){waterCapacity = maxWaterCapacity;}
     public void loseLife(){lives--;}
     public void gainLife(){lives++;}
     
