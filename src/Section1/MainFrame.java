@@ -34,7 +34,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
-        add(mainPanel);
+        setContentPane(mainPanel);
         
         gameController = new GameController(this);
         mainMenuPanel = new MainMenuPanel(this);
