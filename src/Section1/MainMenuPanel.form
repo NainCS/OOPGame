@@ -16,16 +16,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="playBTN" min="-2" max="-2" attributes="0"/>
-                  <Component id="titleLBL" min="-2" max="-2" attributes="0"/>
-                  <Component id="levelBTN" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="scoreBTN" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="exitBTN" alignment="1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="playBTN" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="scoreBTN" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="exitBTN" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="titleLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                      <Component id="levelBTN" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="162" max="32767" attributes="0"/>
+              <EmptySpace pref="169" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
