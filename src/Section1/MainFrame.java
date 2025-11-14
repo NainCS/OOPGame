@@ -7,18 +7,23 @@ package Section1;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import Section3.GameStatsPanel;
+import Section3.PlayerStatsPanel;
+import Section3.ResultPanel;
+import Section3.NavController;
 
 /**
  *
  * @author Sam SY
  */
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements NavController{
     CardLayout cardLayout;
     JPanel mainPanel;
     MainMenuPanel mainMenuPanel;
     JPanel gamePanel;
     JPanel resultPanel;
     GameController gameController;
+    GameStatsPanel gameStatsPanel;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
@@ -38,15 +43,22 @@ public class MainFrame extends javax.swing.JFrame {
         
         gameController = new GameController(this);
         mainMenuPanel = new MainMenuPanel(this);
+        gameStatsPanel = new GameStatsPanel(this);
         gamePanel = new JPanel();
         resultPanel = new JPanel();
         
         mainPanel.add(mainMenuPanel, "MainMenu");
+        mainPanel.add(gameStatsPanel, "GameStats");
         mainPanel.add(gamePanel, "Game");
         mainPanel.add(resultPanel, "Result");
         
         setVisible(true);
         showScreen("MainMenu");
+    }
+    
+    @Override
+    public void switchScreen(String screenName) {
+        cardLayout.show(mainPanel, screenName);
     }
     
     public void showScreen(String name){
