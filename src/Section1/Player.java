@@ -9,10 +9,10 @@ package Section1;
  * @author Sam SY
  */
 public class Player implements Controllable, Scorable, Displayable{
-    int waterCapacity;
-    int maxWaterCapacity;
-    int lives;
-    int score;
+    private int waterCapacity;
+    private int maxWaterCapacity;
+    private int lives;
+    private int score;
     
     public Player(){
         waterCapacity = 10;

@@ -17,13 +17,13 @@ import Section3.NavController;
  * @author Sam SY
  */
 public class MainFrame extends javax.swing.JFrame implements NavController{
-    CardLayout cardLayout;
-    JPanel mainPanel;
-    MainMenuPanel mainMenuPanel;
-    JPanel gamePanel;
-    JPanel resultPanel;
-    GameController gameController;
-    GameStatsPanel gameStatsPanel;
+    private CardLayout cardLayout;
+    private JPanel mainPanel;
+    private MainMenuPanel mainMenuPanel;
+    private JPanel gamePanel;
+    private JPanel resultPanel;
+    private GameController gameController;
+    private GameStatsPanel gameStatsPanel;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 

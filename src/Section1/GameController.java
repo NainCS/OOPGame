@@ -9,9 +9,9 @@ package Section1;
  * @author Sam SY
  */
 public class GameController {
-    MainFrame mainFrame;
-    Player player;
-    ScoreManager scoreManager;
+    private MainFrame mainFrame;
+    private Player player;
+    private ScoreManager scoreManager;
 
     public GameController(MainFrame frame) {
         this.mainFrame = frame;
