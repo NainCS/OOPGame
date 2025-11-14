@@ -123,7 +123,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private void scoreBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreBTNActionPerformed
         // TODO add your handling code here:
         if(mainFrame != null){
-            mainFrame.showScreen("Result");
+            mainFrame.showScreen("GameStats");
         }
     }//GEN-LAST:event_scoreBTNActionPerformed
 
