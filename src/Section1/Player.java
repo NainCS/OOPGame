@@ -78,4 +78,8 @@ public class Player implements Controllable, Scorable, Displayable{
     public void updateDisplay(){
         System.out.println("Player Display Update");
     }
+    
+    public String printDetails(){
+        return "Details: Player  " + name + " is ready.";
+    }
 }

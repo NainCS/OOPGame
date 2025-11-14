@@ -47,6 +47,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
         deleteBTN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTA = new javax.swing.JTextArea();
+        displayBTN = new javax.swing.JButton();
 
         titleLBL.setText("Firefigher Game");
 
@@ -98,6 +99,13 @@ public class MainMenuPanel extends javax.swing.JPanel {
         displayTA.setRows(5);
         jScrollPane1.setViewportView(displayTA);
 
+        displayBTN.setText("DISPLAY");
+        displayBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,8 +122,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
                                 .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(56, 56, 56)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(deleteBTN)
-                                    .addComponent(addBTN)))))
+                                    .addComponent(addBTN)
+                                    .addComponent(displayBTN)
+                                    .addComponent(deleteBTN)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -141,10 +150,12 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLBL)
-                    .addComponent(deleteBTN))
-                .addGap(34, 34, 34)
+                    .addComponent(displayBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deleteBTN)
+                .addGap(9, 9, 9)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(playBTN)
                     .addComponent(scoreBTN)
@@ -206,10 +217,22 @@ public class MainMenuPanel extends javax.swing.JPanel {
          }
     }//GEN-LAST:event_deleteBTNActionPerformed
 
+    private void displayBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBTNActionPerformed
+        // TODO add your handling code here:
+        if(register.isEmpty()){
+            displayTA.setText("No student registered.");
+        }else{
+            for(Player p:register){ //forEach loop
+                JOptionPane.showMessageDialog(null, p.printDetails());
+            }
+        }
+    }//GEN-LAST:event_displayBTNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBTN;
     private javax.swing.JButton deleteBTN;
+    private javax.swing.JButton displayBTN;
     private javax.swing.JTextArea displayTA;
     private javax.swing.JButton exitBTN;
     private javax.swing.JScrollPane jScrollPane1;
