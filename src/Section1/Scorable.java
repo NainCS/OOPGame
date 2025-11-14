@@ -9,7 +9,7 @@ package Section1;
  * @author Sam SY
  */
 public interface Scorable {
-    int getScore();
-    void addScore(int points);
-    void resetScore();
+    public int getScore();
+    public void addScore(int points);
+    public void resetScore();
 }

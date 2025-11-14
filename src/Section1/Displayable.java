@@ -9,5 +9,5 @@ package Section1;
  * @author Sam SY
  */
 public interface Displayable {
-    void updateDisplay();
+    public void updateDisplay();
 }

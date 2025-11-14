@@ -9,9 +9,9 @@ package Section1;
  * @author Sam SY
  */
 public interface Controllable {
-    void moveUp();
-    void moveDown();
-    void moveRight();
-    void moveLeft();
-    void action();
+    public void moveUp();
+    public void moveDown();
+    public void moveRight();
+    public void moveLeft();
+    public void action();
 }
