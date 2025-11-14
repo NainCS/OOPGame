@@ -22,6 +22,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     public MainMenuPanel(MainFrame frame) {
         this.mainFrame = frame;
         initComponents();
+
         register = new ArrayList<>();
         
     }
@@ -164,12 +165,13 @@ public class MainMenuPanel extends javax.swing.JPanel {
         if(mainFrame != null){
             mainFrame.showScreen("Game");
         }
-        JOptionPane.showMessageDialog(this, "The Game is coming soon!");
     }//GEN-LAST:event_playBTNActionPerformed
 
     private void levelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelBTNActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Level Select coming soon!");
+        if(mainFrame != null){
+            mainFrame.showScreen("LevelSelect");
+        }
     }//GEN-LAST:event_levelBTNActionPerformed
 
     private void scoreBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreBTNActionPerformed
