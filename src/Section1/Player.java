@@ -2,17 +2,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Section1;
+package Section1; //Sook Ying Sam
 
 /**
  *
  * @author Sam SY
  */
 public class Player implements Controllable, Scorable, Displayable{
+    private String name;
     private int waterCapacity;
     private int maxWaterCapacity;
     private int lives;
     private int score;
+
+    public Player(String name) {
+        this.name = name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
     
     public Player(){
         waterCapacity = 10;

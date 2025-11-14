@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Section1;
+package Section1; //Sook Ying Sam
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class MainMenuPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
+    String name;
+    private ArrayList<Player> register;
 
     /**
      * Creates new form MainMenuPanel
@@ -19,6 +22,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     public MainMenuPanel(MainFrame frame) {
         this.mainFrame = frame;
         initComponents();
+        register = new ArrayList<>();
         
     }
 
@@ -36,6 +40,12 @@ public class MainMenuPanel extends javax.swing.JPanel {
         levelBTN = new javax.swing.JButton();
         scoreBTN = new javax.swing.JButton();
         exitBTN = new javax.swing.JButton();
+        nameLBL = new javax.swing.JLabel();
+        nameTF = new javax.swing.JTextField();
+        addBTN = new javax.swing.JButton();
+        deleteBTN = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        displayTA = new javax.swing.JTextArea();
 
         titleLBL.setText("Firefigher Game");
 
@@ -67,6 +77,26 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        nameLBL.setText("Name");
+
+        addBTN.setText("ADD");
+        addBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBTNActionPerformed(evt);
+            }
+        });
+
+        deleteBTN.setText("DELETE");
+        deleteBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBTNActionPerformed(evt);
+            }
+        });
+
+        displayTA.setColumns(20);
+        displayTA.setRows(5);
+        jScrollPane1.setViewportView(displayTA);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,31 +104,52 @@ public class MainMenuPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(playBTN, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scoreBTN, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(exitBTN, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLBL, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(80, 80, 80)
+                        .addComponent(nameLBL)
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleLBL)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(deleteBTN)
+                                    .addComponent(addBTN)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(levelBTN)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                        .addGap(101, 101, 101)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(playBTN)
+                        .addGap(18, 18, 18)
+                        .addComponent(scoreBTN)
+                        .addGap(18, 18, 18)
+                        .addComponent(levelBTN)
+                        .addGap(18, 18, 18)
+                        .addComponent(exitBTN)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(32, 32, 32)
                 .addComponent(titleLBL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addBTN)
                 .addGap(18, 18, 18)
-                .addComponent(playBTN)
-                .addGap(18, 18, 18)
-                .addComponent(levelBTN)
-                .addGap(18, 18, 18)
-                .addComponent(scoreBTN)
-                .addGap(18, 18, 18)
-                .addComponent(exitBTN)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLBL)
+                    .addComponent(deleteBTN))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(playBTN)
+                    .addComponent(scoreBTN)
+                    .addComponent(levelBTN)
+                    .addComponent(exitBTN))
+                .addGap(189, 189, 189))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -128,10 +179,41 @@ public class MainMenuPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_scoreBTNActionPerformed
 
+    private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
+        // TODO add your handling code here:
+        String name = nameTF.getText();
+        Player tempP = new Player(name);
+        register.add(tempP);
+        displayTA.setText("New Player Register.");
+        
+    }//GEN-LAST:event_addBTNActionPerformed
+
+    private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
+        // TODO add your handling code here:
+        if(register.isEmpty()){
+             displayTA.setText("No students registered");
+         }else{
+             String searchTerm = JOptionPane.showInputDialog(null, "Enter Name to be deleted");
+             for(int i = 0; i < register.size(); i++){
+                 Player tempP = register.get(i);
+                 if(tempP.getName().equalsIgnoreCase(searchTerm)){
+                     register.remove(i);
+                     displayTA.setText("Player " + searchTerm + " has been removed.");
+                 }
+             }
+         }
+    }//GEN-LAST:event_deleteBTNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBTN;
+    private javax.swing.JButton deleteBTN;
+    private javax.swing.JTextArea displayTA;
     private javax.swing.JButton exitBTN;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton levelBTN;
+    private javax.swing.JLabel nameLBL;
+    private javax.swing.JTextField nameTF;
     private javax.swing.JButton playBTN;
     private javax.swing.JButton scoreBTN;
     private javax.swing.JLabel titleLBL;
