@@ -113,6 +113,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
         if(mainFrame != null){
             mainFrame.showScreen("Game");
         }
+        JOptionPane.showMessageDialog(this, "The Game is coming soon!");
     }//GEN-LAST:event_playBTNActionPerformed
 
     private void levelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelBTNActionPerformed
