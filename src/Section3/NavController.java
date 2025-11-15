@@ -6,7 +6,7 @@ package Section3;
 
 /**
  *
- * @author Owner
+ * @author Edgar Camacho
  */
 public interface NavController {
     public void switchScreen(String screenName);

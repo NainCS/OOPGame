@@ -19,17 +19,15 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="firesExtinguishedLBL" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="bestTimeLBL" alignment="0" max="32767" attributes="0"/>
-                      <Component id="totalScoreLBL" alignment="0" pref="89" max="32767" attributes="0"/>
+                      <Component id="totalGamesLBL" alignment="0" max="32767" attributes="0"/>
+                      <Component id="completedLevelsLBL" alignment="0" pref="122" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="firesExtinguishedLBL" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="totalGamesLBL" max="32767" attributes="0"/>
-                      <Component id="completedLevelsLBL" pref="122" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="totalScoreLBL" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="211" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="104" max="32767" attributes="0"/>
@@ -78,17 +76,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="totalScoreLBL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total Score"/>
+        <Property name="text" type="java.lang.String" value="Total Score: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="bestTimeLBL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Best Time"/>
+        <Property name="text" type="java.lang.String" value="Best Time: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="firesExtinguishedLBL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fires Extinguished"/>
+        <Property name="text" type="java.lang.String" value="Fires Extinguished: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backBTN">

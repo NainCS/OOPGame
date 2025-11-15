@@ -8,7 +8,7 @@ import java.awt.*;
 
 /**
  *
- * @author Owner
+ * @author Edgar Camacho
  */
 public abstract class GameObject implements CollisionActions{
     
