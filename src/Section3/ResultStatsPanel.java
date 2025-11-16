@@ -108,10 +108,6 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(titleLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(144, 144, 144))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -141,7 +137,10 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                                     .addComponent(levelLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(currentScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(livesLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(waterLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(waterLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(titleLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)))))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -232,6 +231,7 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             File file = new File(username + "_stats.txt");
             PrintWriter writer = new PrintWriter(new FileWriter(file));
             
+            writer.println("Username:" + username);
             writer.println("Level:" + levelLBL.getText().replace("Level: ", ""));
             writer.println("Score:" + currentScoreLBL.getText().replace("Current Score: ", ""));
             writer.println("Lives:" + livesLBL.getText().replace("Lives: ", ""));
@@ -254,25 +254,28 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             if (statsFile.exists()) {
                 BufferedReader reader = new BufferedReader(new FileReader(statsFile));
                 String line;
+                
                 while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(":");
-                    if (parts.length == 2) {
-                        switch (parts[0]) {
+                    String[] textParts = line.split(":");
+                    if (textParts.length == 2) {
+                        switch (textParts[0]) {
+                            case "Username":
+                                break;
                             case "Level":
-                                levelLBL.setText("Level: " + parts[1]);
+                                levelLBL.setText("Level: " + textParts[1]);
                                 break;
                             case "Score":
-                                currentScoreLBL.setText("Current Score: " + parts[1]);
+                                currentScoreLBL.setText("Current Score: " + textParts[1]);
                                 break;
                             case "Lives":
-                                livesLBL.setText("Lives: " + parts[1]);
+                                livesLBL.setText("Lives: " + textParts[1]);
                                 break;
                             case "Water":
-                                waterLBL.setText("Water: " + parts[1]);
+                                waterLBL.setText("Water: " + textParts[1]);
                                 break;
                             case "Experience":
-                                experienceBar.setValue(Integer.parseInt(parts[1]));
-                                experienceBar.setString("Experience: " + parts[1] + "%");
+                                experienceBar.setValue(Integer.parseInt(textParts[1]));
+                                experienceBar.setString("Experience: " + textParts[1] + "%");
                                 break;
                         }
                     }
@@ -284,7 +287,7 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         }
         
     
-        List<String> games = readUserGames(username);
+        List<String> games = readUserGames(this.currentUser);
         
         if (games.isEmpty()) {
             historyOfGameTA.setText("No games played yet for: " + username);
