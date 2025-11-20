@@ -5,8 +5,7 @@
 package Section3;
 
 import java.awt.*;
-import java.util.HashSet;
-import java.util.Set;
+
 /**
  *
  * @author Edgar Camacho
@@ -16,6 +15,7 @@ public class Trees extends GameObject{
     private boolean flammable;
     private int durability;
     private boolean onFire;
+    private boolean spreadFire;
 
     public Trees() {
         super();
@@ -35,8 +35,11 @@ public class Trees extends GameObject{
     
     @Override
     public void resolveCollision(){
-        if (colliding) {
-            System.out.println("Tree is colliding with another sprite");
+        if (colliding && isActive) {
+            if (flammable && !onFire) {
+                setOnFire(true);
+            }
+            setColliding(false);
         }
     }
     
@@ -74,6 +77,10 @@ public class Trees extends GameObject{
         return onFire;
     }
 
+    public boolean allowSpreadFire() {
+        return spreadFire && onFire;
+    }
+
     public void setTypeOfTree(String typeOfTree) {
         this.typeOfTree = typeOfTree;
     }
@@ -92,10 +99,12 @@ public class Trees extends GameObject{
     public void setOnFire(boolean onFire) {
         if (flammable) {
             this.onFire = onFire;
-            if (onFire) {
-                setColliding(true);   //spread fires
-            }
+            this.spreadFire = onFire;
         }
+    }
+
+    public void setSpreadFire(boolean spreadFire) {
+        this.spreadFire = spreadFire;
     }
     
     @Override

@@ -28,8 +28,11 @@ public class Fire extends GameObject{
     
     @Override
     public void resolveCollision(){
-        if (colliding) {
-            System.out.println("Fire is colliding with another sprite");
+        if (colliding && !extinguished) {
+            
+            setIntensity(intensity - 1);
+            
+            setColliding(false);
         }
     }
     
@@ -44,7 +47,7 @@ public class Fire extends GameObject{
         }
     }
     
-    public void spreadtree(Trees tree){
+    public void spreadToTree(Trees tree){
         if (!extinguished && tree.isFlammable() && !tree.isOnFire()) {
             tree.setOnFire(true);
         }

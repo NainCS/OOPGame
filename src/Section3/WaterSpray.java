@@ -34,6 +34,13 @@ public class WaterSpray extends GameObject{
         this.waterAmount = waterAmount;
     }
     
+    @Override
+    public void resolveCollision(){
+        if (colliding) {
+            setColliding(false);
+        }
+    }
+    
     public boolean collideWith(GameObject other){
         if (!active)return false;
     
