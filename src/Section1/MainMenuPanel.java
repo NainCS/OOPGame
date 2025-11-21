@@ -250,7 +250,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
         // TODO add your handling code here:
         if(register.isEmpty()){
-             displayTA.setText("No students registered");
+             displayTA.setText("No players registered");
          }else{
              String searchTerm = JOptionPane.showInputDialog(null, "Enter Name to be deleted");
              for(int i = 0; i < register.size(); i++){
@@ -266,7 +266,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private void displayBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBTNActionPerformed
         // TODO add your handling code here:
         if(register.isEmpty()){
-            displayTA.setText("No student registered.");
+            displayTA.setText("No players registered.");
         }else{
             for(Player p:register){ //forEach loop
                 JOptionPane.showMessageDialog(null, p.printDetails());
