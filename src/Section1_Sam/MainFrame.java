@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Section1; //Sook Ying Sam
+package Section1_Sam; //Sook Ying Sam
 
 import Section2.GamePanel;
 import Section2.LevelSelectPanel;
@@ -39,7 +39,7 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     public MainFrame() {
         initComponents();
         setTitle("Firefigher Game");
-        setSize(800,600);
+        setSize(1920,1080);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         

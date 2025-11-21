@@ -4,7 +4,7 @@
  */
 package oopgame; //Group N
 
-import Section1.MainFrame;
+import Section1_Sam.MainFrame;
 import javax.swing.SwingUtilities;
 
 /**
