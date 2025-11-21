@@ -11,9 +11,9 @@ import Section2_Lance.SettingsPanel;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import Section3.GameStatsPanel;
-import Section3.NavController;
-import Section3.ResultStatsPanel;
+import Section3_Edgar.GameStatsPanel;
+import Section3_Edgar.NavController;
+import Section3_Edgar.ResultStatsPanel;
 
 /**
  *

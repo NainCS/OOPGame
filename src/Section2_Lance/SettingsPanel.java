@@ -4,7 +4,7 @@
  */
 package Section2_Lance;
 
-import Section3.NavController;
+import Section3_Edgar.NavController;
 
 /**
  *
