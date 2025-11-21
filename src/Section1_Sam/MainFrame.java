@@ -4,16 +4,16 @@
  */
 package Section1_Sam; //Sook Ying Sam
 
-import Section2.GamePanel;
-import Section2.LevelSelectPanel;
-import Section2.PauseMenuPanel;
-import Section2.SettingsPanel;
+import Section2_Lance.GamePanel;
+import Section2_Lance.LevelSelectPanel;
+import Section2_Lance.PauseMenuPanel;
+import Section2_Lance.SettingsPanel;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import Section3.GameStatsPanel;
-import Section3.NavController;
-import Section3.ResultStatsPanel;
+import Section3_Edgar.GameStatsPanel;
+import Section3_Edgar.NavController;
+import Section3_Edgar.ResultStatsPanel;
 
 /**
  *

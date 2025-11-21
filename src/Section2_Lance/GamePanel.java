@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Section2;
+package Section2_Lance;
 
-import Section3.NavController;
+import Section3_Edgar.NavController;
 
 /**
  *
@@ -36,6 +36,9 @@ public class GamePanel extends javax.swing.JPanel {
         waterLBL = new javax.swing.JLabel();
         timerLBL = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+
+        pauseBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         pauseBTN.setText("PAUSE");
         pauseBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,12 +46,17 @@ public class GamePanel extends javax.swing.JPanel {
             }
         });
 
+        scoreLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         scoreLBL.setText("SCORE:");
+        scoreLBL.setToolTipText("");
 
+        livesLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         livesLBL.setText("LIVES:");
 
+        waterLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         waterLBL.setText("WATER LEFT:");
 
+        timerLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         timerLBL.setText("TIME LEFT:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -58,28 +66,31 @@ public class GamePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pauseBTN)
-                .addGap(62, 62, 62)
+                .addGap(305, 305, 305)
                 .addComponent(livesLBL)
-                .addGap(31, 31, 31)
+                .addGap(128, 128, 128)
                 .addComponent(waterLBL)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scoreLBL)
-                    .addComponent(timerLBL))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(112, 112, 112)
+                .addComponent(timerLBL)
+                .addGap(123, 123, 123)
+                .addComponent(scoreLBL)
+                .addContainerGap(476, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pauseBTN)
-                    .addComponent(livesLBL)
-                    .addComponent(waterLBL)
-                    .addComponent(timerLBL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
-                .addComponent(scoreLBL)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pauseBTN))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(scoreLBL)
+                            .addComponent(timerLBL)
+                            .addComponent(waterLBL)
+                            .addComponent(livesLBL))))
+                .addContainerGap(995, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

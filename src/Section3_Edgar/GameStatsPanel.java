@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Section3;
-import Section1.MainFrame;
+
+package Section3_Edgar;
+
+import Section1_Sam.MainFrame;
 
 /**
  *
@@ -42,17 +44,42 @@ public class GameStatsPanel extends javax.swing.JPanel{
         achievementsScroll = new javax.swing.JScrollPane();
         achievementsTXT = new javax.swing.JTextArea();
         bestPlayerLBL = new javax.swing.JLabel();
+        achievementsLBL = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(45, 73, 76));
+        setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.MatteBorder(null), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153))));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+
+        totalGamesLBL.setBackground(new java.awt.Color(255, 255, 255));
+        totalGamesLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        totalGamesLBL.setForeground(java.awt.Color.white);
         totalGamesLBL.setText("Total Games: ");
 
+        completedLevelsLBL.setBackground(new java.awt.Color(255, 255, 255));
+        completedLevelsLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        completedLevelsLBL.setForeground(java.awt.Color.white);
         completedLevelsLBL.setText("Completed Levels: ");
 
+        totalScoreLBL.setBackground(new java.awt.Color(255, 255, 255));
+        totalScoreLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        totalScoreLBL.setForeground(java.awt.Color.white);
         totalScoreLBL.setText("Total Score: ");
 
+        bestTimeLBL.setBackground(new java.awt.Color(255, 255, 255));
+        bestTimeLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bestTimeLBL.setForeground(java.awt.Color.white);
         bestTimeLBL.setText("Best Time: ");
 
+        firesExtinguishedLBL.setBackground(new java.awt.Color(255, 255, 255));
+        firesExtinguishedLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firesExtinguishedLBL.setForeground(java.awt.Color.white);
         firesExtinguishedLBL.setText("Fires Extinguished: ");
 
+        backBTN.setBackground(new java.awt.Color(0, 92, 59));
+        backBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        backBTN.setForeground(new java.awt.Color(255, 255, 255));
         backBTN.setText("Back");
         backBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,59 +88,72 @@ public class GameStatsPanel extends javax.swing.JPanel{
         });
 
         achievementsTXT.setColumns(20);
+        achievementsTXT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         achievementsTXT.setRows(5);
         achievementsScroll.setViewportView(achievementsTXT);
 
+        bestPlayerLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        bestPlayerLBL.setForeground(new java.awt.Color(255, 255, 255));
         bestPlayerLBL.setText("Best Player: ");
+
+        achievementsLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        achievementsLBL.setForeground(new java.awt.Color(250, 250, 250));
+        achievementsLBL.setText("Achievements:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(bestTimeLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(totalGamesLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(completedLevelsLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                    .addComponent(totalScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 211, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
-                .addComponent(achievementsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(backBTN))
+                        .addComponent(backBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(329, 329, 329)
+                        .addComponent(bestPlayerLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(bestPlayerLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(341, 341, 341)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(totalGamesLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(214, 214, 214)
+                                .addComponent(achievementsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(totalScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(completedLevelsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bestTimeLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53)
+                                .addComponent(achievementsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(720, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(bestPlayerLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalGamesLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(completedLevelsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(totalScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bestTimeLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(achievementsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(backBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bestPlayerLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(totalGamesLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(achievementsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(totalScoreLBL)
+                        .addGap(28, 28, 28)
+                        .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(completedLevelsLBL)
+                        .addGap(30, 30, 30)
+                        .addComponent(bestTimeLBL))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(achievementsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(599, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,11 +175,13 @@ public class GameStatsPanel extends javax.swing.JPanel{
        totalScoreLBL.setText("Total Score: 2,450");
        bestTimeLBL.setText("Best Time: 1:25");
        firesExtinguishedLBL.setText("Fires Extinguished: 28");
-       achievementsTXT.setText("Achievements:\n- First Fire Extinguished\n- Level 1 Completed\n- Water Master");
+       achievementsTXT.setText("First Fire Extinguished\n- Level 1 Completed\n- Water Master");
+
        bestPlayerLBL.setText("Best Player: User 1");
    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel achievementsLBL;
     private javax.swing.JScrollPane achievementsScroll;
     private javax.swing.JTextArea achievementsTXT;
     private javax.swing.JButton backBTN;
