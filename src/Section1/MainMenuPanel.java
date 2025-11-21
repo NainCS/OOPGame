@@ -26,7 +26,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     public MainMenuPanel(MainFrame frame) {
         this.mainFrame = frame;
         initComponents();
-
+        setSize(1920,1080);
         register = new ArrayList<>();
         
     }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Section2;
+package Section2_Lance;
 
 import Section3.NavController;
 
@@ -34,8 +34,13 @@ public class SettingsPanel extends javax.swing.JPanel {
         settingsLBL = new javax.swing.JLabel();
         backBTN = new javax.swing.JButton();
 
-        settingsLBL.setText("Settings");
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
+        settingsLBL.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        settingsLBL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        settingsLBL.setText("SETTINGS");
+
+        backBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         backBTN.setText("Back");
         backBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,20 +53,23 @@ public class SettingsPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(6, 6, 6)
                 .addComponent(backBTN)
-                .addGap(79, 79, 79)
+                .addGap(727, 727, 727)
                 .addComponent(settingsLBL)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(855, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(settingsLBL)
-                    .addComponent(backBTN))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(backBTN))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(settingsLBL)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

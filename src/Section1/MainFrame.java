@@ -4,10 +4,10 @@
  */
 package Section1; //Sook Ying Sam
 
-import Section2.GamePanel;
-import Section2.LevelSelectPanel;
-import Section2.PauseMenuPanel;
-import Section2.SettingsPanel;
+import Section2_Lance.GamePanel;
+import Section2_Lance.LevelSelectPanel;
+import Section2_Lance.PauseMenuPanel;
+import Section2_Lance.SettingsPanel;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -39,7 +39,7 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     public MainFrame() {
         initComponents();
         setTitle("Firefigher Game");
-        setSize(800,600);
+        setSize(1920,1080);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
