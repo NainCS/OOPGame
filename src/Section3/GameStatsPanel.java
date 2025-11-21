@@ -7,7 +7,7 @@ import Section1.MainFrame;
 
 /**
  *
- * @author Owner
+ * @author Edgar Camacho
  */
 public class GameStatsPanel extends javax.swing.JPanel{
     
@@ -41,16 +41,17 @@ public class GameStatsPanel extends javax.swing.JPanel{
         backBTN = new javax.swing.JButton();
         achievementsScroll = new javax.swing.JScrollPane();
         achievementsTXT = new javax.swing.JTextArea();
+        bestPlayerLBL = new javax.swing.JLabel();
 
         totalGamesLBL.setText("Total Games: ");
 
         completedLevelsLBL.setText("Completed Levels: ");
 
-        totalScoreLBL.setText("Total Score");
+        totalScoreLBL.setText("Total Score: ");
 
-        bestTimeLBL.setText("Best Time");
+        bestTimeLBL.setText("Best Time: ");
 
-        firesExtinguishedLBL.setText("Fires Extinguished");
+        firesExtinguishedLBL.setText("Fires Extinguished: ");
 
         backBTN.setText("Back");
         backBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +64,8 @@ public class GameStatsPanel extends javax.swing.JPanel{
         achievementsTXT.setRows(5);
         achievementsScroll.setViewportView(achievementsTXT);
 
+        bestPlayerLBL.setText("Best Player: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,27 +73,33 @@ public class GameStatsPanel extends javax.swing.JPanel{
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(bestTimeLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(totalScoreLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
-                    .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(totalGamesLBL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(completedLevelsLBL, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(totalGamesLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(completedLevelsLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(totalScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 211, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(104, Short.MAX_VALUE)
                 .addComponent(achievementsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103))
             .addGroup(layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(backBTN)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(backBTN))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(bestPlayerLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(29, 29, 29)
+                .addComponent(bestPlayerLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalGamesLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(completedLevelsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,13 +135,15 @@ public class GameStatsPanel extends javax.swing.JPanel{
        totalScoreLBL.setText("Total Score: 2,450");
        bestTimeLBL.setText("Best Time: 1:25");
        firesExtinguishedLBL.setText("Fires Extinguished: 28");
-       achievementsTXT.setText("Achievements:\n- First Fire Extinguished\n- Level 1 Completed\n- Water Master\n- Quick Responder");
+       achievementsTXT.setText("Achievements:\n- First Fire Extinguished\n- Level 1 Completed\n- Water Master");
+       bestPlayerLBL.setText("Best Player: User 1");
    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane achievementsScroll;
     private javax.swing.JTextArea achievementsTXT;
     private javax.swing.JButton backBTN;
+    private javax.swing.JLabel bestPlayerLBL;
     private javax.swing.JLabel bestTimeLBL;
     private javax.swing.JLabel completedLevelsLBL;
     private javax.swing.JLabel firesExtinguishedLBL;

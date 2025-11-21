@@ -8,7 +8,7 @@ import java.awt.*;
 
 /**
  *
- * @author Owner
+ * @author Edgar Camacho
  */
 public abstract class GameObject implements CollisionActions{
     
@@ -38,7 +38,7 @@ public abstract class GameObject implements CollisionActions{
     
     @Override
     public void resolveCollision(){
-        
+        //Collisions are gonna be handled by every class that inherits this feature
     } 
     
     public abstract void draw(Graphics g);
@@ -75,7 +75,7 @@ public abstract class GameObject implements CollisionActions{
         this.edges.setLocation(positionX, positionY);
     }
 
-    public void setColliding(boolean colliding) {
+    public void setColliding(boolean colliding) {   
         this.colliding = colliding;
     }
 

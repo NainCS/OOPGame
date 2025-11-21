@@ -4,6 +4,10 @@
  */
 package Section1; //Sook Ying Sam
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -39,7 +43,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
         titleLBL = new javax.swing.JLabel();
         playBTN = new javax.swing.JButton();
         levelBTN = new javax.swing.JButton();
-        scoreBTN = new javax.swing.JButton();
+        resultBTN = new javax.swing.JButton();
         exitBTN = new javax.swing.JButton();
         nameLBL = new javax.swing.JLabel();
         nameTF = new javax.swing.JTextField();
@@ -47,6 +51,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
         deleteBTN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTA = new javax.swing.JTextArea();
+        displayBTN = new javax.swing.JButton();
+        gameStatsBTN = new javax.swing.JButton();
 
         titleLBL.setText("Firefigher Game");
 
@@ -64,10 +70,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
-        scoreBTN.setText("Score");
-        scoreBTN.addActionListener(new java.awt.event.ActionListener() {
+        resultBTN.setText("Result Stats ");
+        resultBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scoreBTNActionPerformed(evt);
+                resultBTNActionPerformed(evt);
             }
         });
 
@@ -98,59 +104,93 @@ public class MainMenuPanel extends javax.swing.JPanel {
         displayTA.setRows(5);
         jScrollPane1.setViewportView(displayTA);
 
+        displayBTN.setText("DISPLAY");
+        displayBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayBTNActionPerformed(evt);
+            }
+        });
+
+        gameStatsBTN.setText("Game Stats");
+        gameStatsBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gameStatsBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(titleLBL)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(nameLBL)
-                        .addGap(45, 45, 45)
+                        .addComponent(nameLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLBL)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(deleteBTN)
-                                    .addComponent(addBTN)))))
+                            .addComponent(deleteBTN)
+                            .addComponent(displayBTN)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(playBTN)
-                        .addGap(18, 18, 18)
-                        .addComponent(scoreBTN)
-                        .addGap(18, 18, 18)
                         .addComponent(levelBTN)
-                        .addGap(18, 18, 18)
-                        .addComponent(exitBTN)))
-                .addContainerGap(248, Short.MAX_VALUE))
+                        .addGap(51, 51, 51)
+                        .addComponent(resultBTN)
+                        .addGap(71, 71, 71)
+                        .addComponent(gameStatsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(addBTN)))
+                .addGap(88, 88, 88))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(playBTN)
+                        .addGap(44, 44, 44)
+                        .addComponent(exitBTN))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(230, 230, 230))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(44, 44, 44)
                 .addComponent(titleLBL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addBTN)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(addBTN)
+                        .addGap(18, 18, 18)
+                        .addComponent(displayBTN))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLBL))))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deleteBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(playBTN)
+                            .addComponent(exitBTN))
+                        .addGap(43, 43, 43)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLBL)
-                    .addComponent(deleteBTN))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(playBTN)
-                    .addComponent(scoreBTN)
                     .addComponent(levelBTN)
-                    .addComponent(exitBTN))
-                .addGap(189, 189, 189))
+                    .addComponent(resultBTN)
+                    .addComponent(gameStatsBTN))
+                .addGap(119, 119, 119))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -174,26 +214,43 @@ public class MainMenuPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_levelBTNActionPerformed
 
-    private void scoreBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreBTNActionPerformed
+    private void resultBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultBTNActionPerformed
         // TODO add your handling code here:
         if(mainFrame != null){
-            mainFrame.showScreen("GameStats");
+            String playerName = nameTF.getText().trim();
+            
+            if(!playerName.isEmpty()) {
+            File playerFile = new File(playerName + "_stats.txt");
+            if(playerFile.exists()) {
+                System.out.println("Loading stats for: " + playerName); 
+                mainFrame.showResultsStats(playerName);
+            } else {
+                displayTA.setText("Player '" + playerName + "' not found. Please ADD player first.");
+                System.out.println("File not found: " + playerFile.getAbsolutePath()); // Debug
+            }
+        } else {
+            displayTA.setText("Please enter a player name first.");
         }
-    }//GEN-LAST:event_scoreBTNActionPerformed
-
+        }
+    }//GEN-LAST:event_resultBTNActionPerformed
+    
+    
+                                              
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         // TODO add your handling code here:
-        String name = nameTF.getText();
-        Player tempP = new Player(name);
-        register.add(tempP);
-        displayTA.setText("New Player Register.");
-        
+        String name = nameTF.getText().trim();
+        if (!name.isEmpty()) {
+            Player tempP = new Player(name);
+            register.add(tempP);
+            savePlayerToFile(tempP);  
+            displayTA.setText("New Player Registered: " + name);
+        }        
     }//GEN-LAST:event_addBTNActionPerformed
 
     private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
         // TODO add your handling code here:
         if(register.isEmpty()){
-             displayTA.setText("No students registered");
+             displayTA.setText("No players registered");
          }else{
              String searchTerm = JOptionPane.showInputDialog(null, "Enter Name to be deleted");
              for(int i = 0; i < register.size(); i++){
@@ -206,18 +263,55 @@ public class MainMenuPanel extends javax.swing.JPanel {
          }
     }//GEN-LAST:event_deleteBTNActionPerformed
 
+    private void displayBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBTNActionPerformed
+        // TODO add your handling code here:
+        if(register.isEmpty()){
+            displayTA.setText("No players registered.");
+        }else{
+            for(Player p:register){ //forEach loop
+                JOptionPane.showMessageDialog(null, p.printDetails());
+            }
+        }
+    }//GEN-LAST:event_displayBTNActionPerformed
+
+    private void gameStatsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameStatsBTNActionPerformed
+        // TODO add your handling code here:
+        if(mainFrame != null){
+        mainFrame.showScreen("GameStats");
+    }
+    }//GEN-LAST:event_gameStatsBTNActionPerformed
+
+    private void savePlayerToFile(Player player) {
+    try {
+        File file = new File(player.getName() + "_stats.txt");
+        PrintWriter writer = new PrintWriter(new FileWriter(file));
+        
+        writer.println("Level:1");
+        writer.println("Score:0");
+        writer.println("Lives:3");
+        writer.println("Water:100");
+        writer.println("Experience:0");
+        
+        writer.close();
+    } catch (IOException e) {
+        System.out.println("Error saving player: " + e.getMessage());
+    }
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBTN;
     private javax.swing.JButton deleteBTN;
+    private javax.swing.JButton displayBTN;
     private javax.swing.JTextArea displayTA;
     private javax.swing.JButton exitBTN;
+    private javax.swing.JButton gameStatsBTN;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton levelBTN;
     private javax.swing.JLabel nameLBL;
     private javax.swing.JTextField nameTF;
     private javax.swing.JButton playBTN;
-    private javax.swing.JButton scoreBTN;
+    private javax.swing.JButton resultBTN;
     private javax.swing.JLabel titleLBL;
     // End of variables declaration//GEN-END:variables
 }

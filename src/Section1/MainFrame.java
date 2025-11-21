@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import Section3.GameStatsPanel;
 import Section3.NavController;
+import Section3.ResultStatsPanel;
 
 /**
  *
@@ -23,9 +24,9 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     private JPanel mainPanel;
     private MainMenuPanel mainMenuPanel;
     private GamePanel gamePanel;
-    private JPanel resultPanel;
     private GameController gameController;
     private GameStatsPanel gameStatsPanel;
+    private ResultStatsPanel resultStatsPanel;
     private LevelSelectPanel levelSelectPanel;
     private PauseMenuPanel pauseMenuPanel;
     private SettingsPanel settingsPanel;
@@ -49,16 +50,16 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         gameController = new GameController(this);
         mainMenuPanel = new MainMenuPanel(this);
         gameStatsPanel = new GameStatsPanel(this);
+        resultStatsPanel = new ResultStatsPanel(this);
         gamePanel = new GamePanel(this);
-        resultPanel = new JPanel();
         levelSelectPanel = new LevelSelectPanel(this);
         pauseMenuPanel = new PauseMenuPanel(this);
         settingsPanel = new SettingsPanel(this);
         
         mainPanel.add(mainMenuPanel, "MainMenu");
         mainPanel.add(gameStatsPanel, "GameStats");
+        mainPanel.add(resultStatsPanel, "ResultStats");
         mainPanel.add(gamePanel, "Game");
-        mainPanel.add(resultPanel, "Result");
         mainPanel.add(levelSelectPanel, "LevelSelect");
         mainPanel.add(pauseMenuPanel, "PauseMenu");
         mainPanel.add(settingsPanel, "Settings");
@@ -81,7 +82,14 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         return gameController;
     }
 
-    
+    public void showResultsStats(String playerName) {
+    System.out.println("MainFrame: Showing stats for " + playerName);
+   
+    if (resultStatsPanel != null) {
+        resultStatsPanel.loadPlayerStats(playerName);
+    }
+    showScreen("ResultStats");
+}
     
     /**
      * This method is called from within the constructor to initialize the form.
