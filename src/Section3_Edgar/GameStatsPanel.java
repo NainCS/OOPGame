@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+
 package Section3_Edgar;
-import Section1.MainFrame;
+
+import Section1_Sam.MainFrame;
 
 /**
  *
@@ -174,6 +176,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
        bestTimeLBL.setText("Best Time: 1:25");
        firesExtinguishedLBL.setText("Fires Extinguished: 28");
        achievementsTXT.setText("First Fire Extinguished\n- Level 1 Completed\n- Water Master");
+
        bestPlayerLBL.setText("Best Player: User 1");
    }
     

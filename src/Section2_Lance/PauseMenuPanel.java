@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Section2;
+package Section2_Lance;
 
 import Section3_Edgar.NavController;
 
@@ -36,7 +36,11 @@ public class PauseMenuPanel extends javax.swing.JPanel {
         resumeBTN = new javax.swing.JButton();
         mainmenuBTN = new javax.swing.JButton();
         settingsBTN = new javax.swing.JButton();
+        gamepausedLBL = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+
+        resumeBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         resumeBTN.setText("RESUME");
         resumeBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +48,7 @@ public class PauseMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        mainmenuBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         mainmenuBTN.setText("MAIN MENU");
         mainmenuBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +56,7 @@ public class PauseMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        settingsBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         settingsBTN.setText("SETTINGS");
         settingsBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,28 +64,38 @@ public class PauseMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        gamepausedLBL.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        gamepausedLBL.setText("GAME PAUSED");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(resumeBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mainmenuBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(settingsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(836, 836, 836)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(resumeBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(settingsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mainmenuBTN)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(788, 788, 788)
+                        .addComponent(gamepausedLBL)))
+                .addContainerGap(793, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(38, 38, 38)
+                .addComponent(gamepausedLBL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
                 .addComponent(resumeBTN)
-                .addGap(43, 43, 43)
+                .addGap(121, 121, 121)
                 .addComponent(settingsBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(120, 120, 120)
                 .addComponent(mainmenuBTN)
-                .addGap(77, 77, 77))
+                .addGap(336, 336, 336))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,6 +122,7 @@ public class PauseMenuPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel gamepausedLBL;
     private javax.swing.JButton mainmenuBTN;
     private javax.swing.JButton resumeBTN;
     private javax.swing.JButton settingsBTN;

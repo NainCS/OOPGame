@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Section1; //Sook Ying Sam
+package Section1_Sam; //Sook Ying Sam
 
 /**
  *
@@ -10,8 +10,7 @@ package Section1; //Sook Ying Sam
  */
 public class Player implements Controllable, Scorable, Displayable{
     private String name;
-    private int waterCapacity;
-    private int maxWaterCapacity;
+    private int waterSpray;
     private int lives;
     private int score;
 
@@ -29,21 +28,20 @@ public class Player implements Controllable, Scorable, Displayable{
     
     
     public Player(){
-        waterCapacity = 10;
-        maxWaterCapacity = 10;
+        waterSpray = 10;
         lives = 3;
         score = 0;
     }
     
     public boolean sprayWater(){
-        if (waterCapacity > 0){
-            waterCapacity--;
+        if (waterSpray > 0){
+            waterSpray--;
             return true;
         }
         return false;
     }
     
-    public void refillWater(){waterCapacity = maxWaterCapacity;}
+    public void refillWater(){waterSpray = waterSpray;}
     public void loseLife(){lives--;}
     public void gainLife(){lives++;}
     
