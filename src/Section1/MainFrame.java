@@ -11,9 +11,9 @@ import Section2.SettingsPanel;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import Section3.GameStatsPanel;
-import Section3.NavController;
-import Section3.ResultStatsPanel;
+import Section3_Edgar.GameStatsPanel;
+import Section3_Edgar.NavController;
+import Section3_Edgar.ResultStatsPanel;
 
 /**
  *
@@ -39,7 +39,7 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     public MainFrame() {
         initComponents();
         setTitle("Firefigher Game");
-        setSize(800,600);
+        setSize(1920,1080);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         

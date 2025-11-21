@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Section3;
+package Section3_Edgar;
+
+import java.awt.*;
 
 /**
  *
  * @author Edgar Camacho
  */
-public interface NavController {
-    public void switchScreen(String screenName);
+public interface CollisionActions {
+    Rectangle getEdges();
+    void resolveCollision();
+    
 }
