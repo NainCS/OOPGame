@@ -4,11 +4,14 @@
  */
 package Section1_Sam; //Sook Ying Sam
 
+
+import Section3_Edgar.GameObject;
+import java.awt.Graphics;
 /**
  *
  * @author Sam SY
  */
-public class Player implements Controllable, Scorable, Displayable{
+public class Player extends GameObject implements Controllable, Scorable, Displayable{
     private String name;
     private int waterSpray;
     private int lives;
@@ -45,6 +48,13 @@ public class Player implements Controllable, Scorable, Displayable{
     public void loseLife(){lives--;}
     public void gainLife(){lives++;}
     
+    
+    @Override
+    public void draw(Graphics g){
+    }
+    @Override
+    public void update(){
+    }
     @Override
     public void moveUp(){
     }

@@ -55,7 +55,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
         gameStatsBTN = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 255, 0));
+        setBackground(new java.awt.Color(139, 174, 102));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         titleLBL.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
@@ -169,7 +170,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                                 .addComponent(levelBTN)
                                 .addGap(51, 51, 51)
                                 .addComponent(resultBTN)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(gameStatsBTN))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(527, 527, 527)
@@ -222,7 +223,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(942, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
