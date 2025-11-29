@@ -72,9 +72,9 @@ public class GamePanel extends javax.swing.JPanel {
                 .addComponent(waterLBL)
                 .addGap(112, 112, 112)
                 .addComponent(timerLBL)
-                .addGap(123, 123, 123)
+                .addGap(134, 134, 134)
                 .addComponent(scoreLBL)
-                .addContainerGap(476, Short.MAX_VALUE))
+                .addContainerGap(465, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

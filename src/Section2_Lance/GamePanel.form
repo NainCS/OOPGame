@@ -30,9 +30,9 @@
               <Component id="waterLBL" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
               <Component id="timerLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
               <Component id="scoreLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="476" max="32767" attributes="0"/>
+              <EmptySpace pref="465" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
