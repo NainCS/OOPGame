@@ -53,14 +53,19 @@ public class MainMenuPanel extends javax.swing.JPanel {
         displayTA = new javax.swing.JTextArea();
         displayBTN = new javax.swing.JButton();
         gameStatsBTN = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 204));
+        setBackground(new java.awt.Color(139, 174, 102));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         titleLBL.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        titleLBL.setForeground(new java.awt.Color(255, 255, 255));
         titleLBL.setText("Firefigher Game");
 
+        playBTN.setBackground(new java.awt.Color(0, 92, 59));
         playBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        playBTN.setForeground(new java.awt.Color(255, 255, 255));
         playBTN.setText("PLAY");
         playBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +73,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        levelBTN.setBackground(new java.awt.Color(0, 92, 59));
         levelBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        levelBTN.setForeground(new java.awt.Color(255, 255, 255));
         levelBTN.setText("Level Select");
         levelBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +83,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        resultBTN.setBackground(new java.awt.Color(0, 92, 59));
         resultBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        resultBTN.setForeground(new java.awt.Color(255, 255, 255));
         resultBTN.setText("Result Stats ");
         resultBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +93,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        exitBTN.setBackground(new java.awt.Color(0, 92, 59));
         exitBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        exitBTN.setForeground(new java.awt.Color(255, 255, 255));
         exitBTN.setText("Exit");
         exitBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +104,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
         });
 
         nameLBL.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        nameLBL.setForeground(new java.awt.Color(255, 255, 255));
         nameLBL.setText("Name");
 
         nameTF.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -102,7 +114,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        addBTN.setBackground(new java.awt.Color(0, 92, 59));
         addBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        addBTN.setForeground(new java.awt.Color(255, 255, 255));
         addBTN.setText("ADD");
         addBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +124,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteBTN.setBackground(new java.awt.Color(0, 92, 59));
         deleteBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        deleteBTN.setForeground(new java.awt.Color(255, 255, 255));
         deleteBTN.setText("DELETE");
         deleteBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +139,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
         displayTA.setRows(5);
         jScrollPane1.setViewportView(displayTA);
 
+        displayBTN.setBackground(new java.awt.Color(0, 92, 59));
         displayBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        displayBTN.setForeground(new java.awt.Color(255, 255, 255));
         displayBTN.setText("DISPLAY");
         displayBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +149,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        gameStatsBTN.setBackground(new java.awt.Color(0, 92, 59));
         gameStatsBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        gameStatsBTN.setForeground(new java.awt.Color(255, 255, 255));
         gameStatsBTN.setText("Game Stats");
         gameStatsBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,74 +159,89 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Section1_Sam/minionfirefighter.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(1158, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(addBTN)
-                .addGap(680, 680, 680))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(levelBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(titleLBL)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nameLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
-                                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(245, 245, 245)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deleteBTN)
-                            .addComponent(displayBTN)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(resultBTN)
-                        .addGap(212, 212, 212)
-                        .addComponent(gameStatsBTN)
-                        .addGap(30, 30, 30)))
-                .addGap(666, 666, 666))
+                .addGap(970, 970, 970))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(376, 376, 376)
-                        .addComponent(playBTN)
-                        .addGap(161, 161, 161)
-                        .addComponent(exitBTN))
+                        .addGap(579, 579, 579)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(playBTN)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(exitBTN))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(409, 409, 409)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(472, 472, 472)
+                                .addComponent(levelBTN)
+                                .addGap(51, 51, 51)
+                                .addComponent(resultBTN)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gameStatsBTN))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(527, 527, 527)
+                                .addComponent(nameLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(100, 100, 100)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(titleLBL)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(displayBTN))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(deleteBTN)))
+                        .addGap(103, 103, 103)))
+                .addComponent(jLabel1)
+                .addGap(556, 556, 556))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(titleLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(addBTN)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLBL)
-                    .addComponent(displayBTN))
-                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(titleLBL)
+                        .addGap(82, 82, 82)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameLBL)
+                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(addBTN)
+                        .addGap(39, 39, 39)
+                        .addComponent(displayBTN)))
+                .addGap(34, 34, 34)
                 .addComponent(deleteBTN)
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(playBTN)
-                    .addComponent(exitBTN))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resultBTN)
-                    .addComponent(gameStatsBTN)
-                    .addComponent(levelBTN))
-                .addGap(415, 415, 415))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(playBTN)
+                            .addComponent(exitBTN))
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(levelBTN)
+                            .addComponent(resultBTN)
+                            .addComponent(gameStatsBTN)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -326,6 +361,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea displayTA;
     private javax.swing.JButton exitBTN;
     private javax.swing.JButton gameStatsBTN;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton levelBTN;
     private javax.swing.JLabel nameLBL;

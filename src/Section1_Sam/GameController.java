@@ -27,4 +27,7 @@ public class GameController {
         mainFrame.showScreen("Result");
     }
     
+    public ScoreManager getScoreManager(){
+        return scoreManager;
+    }
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="4c" green="49" red="2d" type="rgb"/>
+      <Color blue="66" green="ae" red="8b" type="rgb"/>
     </Property>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
@@ -50,28 +51,29 @@
                       <EmptySpace min="-2" pref="329" max="-2" attributes="0"/>
                       <Component id="bestPlayerLBL" min="-2" pref="518" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="341" pref="341" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="totalGamesLBL" min="-2" pref="335" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
                               <Component id="achievementsLBL" min="-2" pref="190" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="totalScoreLBL" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
+                                  <Component id="bestScoreLBL" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
+                                  <Component id="bestTimeLBL1" min="-2" pref="302" max="-2" attributes="0"/>
                                   <Component id="completedLevelsLBL" alignment="0" min="-2" pref="324" max="-2" attributes="0"/>
-                                  <Component id="firesExtinguishedLBL" alignment="0" min="-2" pref="363" max="-2" attributes="0"/>
-                                  <Component id="bestTimeLBL" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
+                                  <Component id="firesExtinguishedLBL" min="-2" pref="363" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                               <Component id="achievementsScroll" min="-2" pref="439" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="720" max="32767" attributes="0"/>
+              <EmptySpace pref="601" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,18 +99,20 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="totalScoreLBL" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="firesExtinguishedLBL" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="bestScoreLBL" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="bestTimeLBL1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="completedLevelsLBL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="bestTimeLBL" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="firesExtinguishedLBL" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="achievementsScroll" min="-2" pref="443" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="599" max="32767" attributes="0"/>
+              <EmptySpace pref="405" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -156,7 +160,7 @@
         <Property name="text" type="java.lang.String" value="Total Score: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="bestTimeLBL">
+    <Component class="javax.swing.JLabel" name="bestScoreLBL">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -167,7 +171,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Best Time: "/>
+        <Property name="text" type="java.lang.String" value="Best Score: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="firesExtinguishedLBL">
@@ -202,6 +206,7 @@
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="achievementsScroll">
+
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="achievementsTXT">
@@ -235,6 +240,20 @@
           <Color blue="fa" green="fa" red="fa" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Achievements:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="bestTimeLBL1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Best Time: "/>
       </Properties>
     </Component>
   </SubComponents>
