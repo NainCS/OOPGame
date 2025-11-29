@@ -60,9 +60,12 @@ public class MainMenuPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         titleLBL.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        titleLBL.setForeground(new java.awt.Color(255, 255, 255));
         titleLBL.setText("Firefigher Game");
 
+        playBTN.setBackground(new java.awt.Color(0, 92, 59));
         playBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        playBTN.setForeground(new java.awt.Color(255, 255, 255));
         playBTN.setText("PLAY");
         playBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +73,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        levelBTN.setBackground(new java.awt.Color(0, 92, 59));
         levelBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        levelBTN.setForeground(new java.awt.Color(255, 255, 255));
         levelBTN.setText("Level Select");
         levelBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +83,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        resultBTN.setBackground(new java.awt.Color(0, 92, 59));
         resultBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        resultBTN.setForeground(new java.awt.Color(255, 255, 255));
         resultBTN.setText("Result Stats ");
         resultBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +93,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        exitBTN.setBackground(new java.awt.Color(0, 92, 59));
         exitBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        exitBTN.setForeground(new java.awt.Color(255, 255, 255));
         exitBTN.setText("Exit");
         exitBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +104,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
         });
 
         nameLBL.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
+        nameLBL.setForeground(new java.awt.Color(255, 255, 255));
         nameLBL.setText("Name");
 
         nameTF.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -104,7 +114,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        addBTN.setBackground(new java.awt.Color(0, 92, 59));
         addBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        addBTN.setForeground(new java.awt.Color(255, 255, 255));
         addBTN.setText("ADD");
         addBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +124,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteBTN.setBackground(new java.awt.Color(0, 92, 59));
         deleteBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        deleteBTN.setForeground(new java.awt.Color(255, 255, 255));
         deleteBTN.setText("DELETE");
         deleteBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +139,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
         displayTA.setRows(5);
         jScrollPane1.setViewportView(displayTA);
 
+        displayBTN.setBackground(new java.awt.Color(0, 92, 59));
         displayBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        displayBTN.setForeground(new java.awt.Color(255, 255, 255));
         displayBTN.setText("DISPLAY");
         displayBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +149,9 @@ public class MainMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        gameStatsBTN.setBackground(new java.awt.Color(0, 92, 59));
         gameStatsBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        gameStatsBTN.setForeground(new java.awt.Color(255, 255, 255));
         gameStatsBTN.setText("Game Stats");
         gameStatsBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -5,7 +5,11 @@
 
 package Section3_Edgar;
 
-import Section1_Sam.MainFrame;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 /**
  *
@@ -15,6 +19,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
     
     private NavController navigator;
 
+   
     /**
      * Creates new form GameStatsPanel
      */
@@ -38,15 +43,16 @@ public class GameStatsPanel extends javax.swing.JPanel{
         totalGamesLBL = new javax.swing.JLabel();
         completedLevelsLBL = new javax.swing.JLabel();
         totalScoreLBL = new javax.swing.JLabel();
-        bestTimeLBL = new javax.swing.JLabel();
+        bestScoreLBL = new javax.swing.JLabel();
         firesExtinguishedLBL = new javax.swing.JLabel();
         backBTN = new javax.swing.JButton();
         achievementsScroll = new javax.swing.JScrollPane();
         achievementsTXT = new javax.swing.JTextArea();
         bestPlayerLBL = new javax.swing.JLabel();
         achievementsLBL = new javax.swing.JLabel();
+        bestTimeLBL1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(45, 73, 76));
+        setBackground(new java.awt.Color(139, 174, 102));
         setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.MatteBorder(null), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153))));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -67,10 +73,10 @@ public class GameStatsPanel extends javax.swing.JPanel{
         totalScoreLBL.setForeground(java.awt.Color.white);
         totalScoreLBL.setText("Total Score: ");
 
-        bestTimeLBL.setBackground(new java.awt.Color(255, 255, 255));
-        bestTimeLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        bestTimeLBL.setForeground(java.awt.Color.white);
-        bestTimeLBL.setText("Best Time: ");
+        bestScoreLBL.setBackground(new java.awt.Color(255, 255, 255));
+        bestScoreLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bestScoreLBL.setForeground(java.awt.Color.white);
+        bestScoreLBL.setText("Best Score: ");
 
         firesExtinguishedLBL.setBackground(new java.awt.Color(255, 255, 255));
         firesExtinguishedLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -100,6 +106,11 @@ public class GameStatsPanel extends javax.swing.JPanel{
         achievementsLBL.setForeground(new java.awt.Color(250, 250, 250));
         achievementsLBL.setText("Achievements:");
 
+        bestTimeLBL1.setBackground(new java.awt.Color(255, 255, 255));
+        bestTimeLBL1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bestTimeLBL1.setForeground(java.awt.Color.white);
+        bestTimeLBL1.setText("Best Time: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,12 +131,13 @@ public class GameStatsPanel extends javax.swing.JPanel{
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(totalScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bestScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bestTimeLBL1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(completedLevelsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bestTimeLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(53, 53, 53)
+                                    .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(172, 172, 172)
                                 .addComponent(achievementsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(720, Short.MAX_VALUE))
+                .addContainerGap(601, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,15 +157,17 @@ public class GameStatsPanel extends javax.swing.JPanel{
                         .addGap(35, 35, 35)
                         .addComponent(totalScoreLBL)
                         .addGap(28, 28, 28)
-                        .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addComponent(bestScoreLBL)
+                        .addGap(27, 27, 27)
+                        .addComponent(bestTimeLBL1)
+                        .addGap(18, 18, 18)
                         .addComponent(completedLevelsLBL)
-                        .addGap(30, 30, 30)
-                        .addComponent(bestTimeLBL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(achievementsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(599, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,16 +183,157 @@ public class GameStatsPanel extends javax.swing.JPanel{
     }
     
     public void loadStatistics(){
-       //loading from a txt file in the final version, just for sample set those values here
-       totalGamesLBL.setText("Total Games Played: 5");
-       completedLevelsLBL.setText("Completed Levels: 3");
-       totalScoreLBL.setText("Total Score: 2,450");
-       bestTimeLBL.setText("Best Time: 1:25");
-       firesExtinguishedLBL.setText("Fires Extinguished: 28");
-       achievementsTXT.setText("First Fire Extinguished\n- Level 1 Completed\n- Water Master");
+        ArrayList<String> userList = readAllUsers();
 
-       bestPlayerLBL.setText("Best Player: User 1");
+        if (userList.isEmpty()) {
+            achievementsTXT.setText("No users found in users.txt");
+            bestPlayerLBL.setText("Best Player: -");
+            totalGamesLBL.setText("Total Games: 0");
+            totalScoreLBL.setText("Total Score: 0");
+            bestScoreLBL.setText("Best Score: 0");
+            bestTimeLBL1.setText("Best Time: 0s");
+            completedLevelsLBL.setText("Completed Levels: 0");
+            firesExtinguishedLBL.setText("Fires Extinguished: 0");
+            return;
+        }
+        ArrayList<PlayerStats> allPlayersStats = new ArrayList<>();
+
+        for (String username : userList) {
+            PlayerStats stats = buildStatsForPlayer(username);
+            if (stats.totalGames > 0) {
+                allPlayersStats.add(stats);
+            }
+        }
+
+        if (allPlayersStats.isEmpty()) {
+            achievementsTXT.setText("Users exist, but no game data found.");
+            return;
+        }
+        
+        PlayerStats best = allPlayersStats.get(0);
+        for (PlayerStats p : allPlayersStats){
+            if (p.totalScore > best.totalScore) {
+            best = p;
+            }
+        }
+        
+        bestPlayerLBL.setText("Best Player: " + best.username);
+        totalGamesLBL.setText("Total Games: " + best.totalGames);
+        totalScoreLBL.setText("Total Score: " + best.totalScore);
+        bestScoreLBL.setText("Best Score: " + best.bestScore);
+        bestTimeLBL1.setText("Best Time: " + best.bestTime + "s");
+        completedLevelsLBL.setText("Completed Levels: " + best.completedLevels);
+        firesExtinguishedLBL.setText("Fires Extinguished: " + best.firesExtinguished);
+        
+        AchievementManager manager = new AchievementManager();
+        ArrayList<Achievement> unlocked = manager.getAchievements(best);
+        
+        
+        if (unlocked.isEmpty()) {
+            achievementsTXT.setText("No achievements unlocked.");
+        } else {
+            String text = "";
+            for (Achievement a : unlocked) {
+                text = text + "- " + a.getTitle() + ": " + a.getDescription() + "\n";
+            }
+            achievementsTXT.setText(text);
+        }
    }
+    
+    private ArrayList<String> readAllUsers() {
+        ArrayList<String> users = new ArrayList<>();
+
+        File file = new File("users.txt");
+        if (!file.exists()) {
+            return users;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    users.add(line.trim());
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading users.txt: " + e.getMessage());
+        }
+
+        return users;
+    }
+    
+    private PlayerStats buildStatsForPlayer(String username) {
+        PlayerStats stats = new PlayerStats();
+        stats.username = username;
+        stats.bestTime = Integer.MAX_VALUE;
+
+    // 1. Read all games for this user
+        ArrayList<String> games = readUserGames(username);
+        stats.totalGames = games.size();
+
+        for (String gameLine : games) {
+            String[] parts = gameLine.split(",");
+            if (parts.length >= 3) {
+                int score = Integer.parseInt(parts[0].trim());
+                int time = Integer.parseInt(parts[1].trim());
+
+                stats.totalScore += score;
+
+                if (score > stats.bestScore) stats.bestScore = score;
+                if (time > 0 && time < stats.bestTime) stats.bestTime = time;
+            }
+        }
+
+        if (stats.bestTime == Integer.MAX_VALUE) stats.bestTime = 0;
+
+    // 2. Read extra user stats from username_stats.txt
+        File statsFile = new File(username + "_stats.txt");
+        if (statsFile.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(statsFile))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(":");
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+
+                        if (value.equals("CompletedLevels")) {
+                            stats.completedLevels = Integer.parseInt(value);
+                        } else if (value.equals("FiresExtinguished")) {
+                            stats.firesExtinguished = Integer.parseInt(value);
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println("Error reading stats for " + username);
+            }
+        }
+
+        return stats;
+    }
+    
+    private ArrayList<String> readUserGames(String username) {
+        ArrayList<String> games = new ArrayList<>();
+        File file = new File(username + "_games.txt");
+
+        if (!file.exists()) return games;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    games.add(line.trim());
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading games for " + username);
+        }
+
+        return games;
+    }
+
+
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel achievementsLBL;
@@ -186,7 +341,8 @@ public class GameStatsPanel extends javax.swing.JPanel{
     private javax.swing.JTextArea achievementsTXT;
     private javax.swing.JButton backBTN;
     private javax.swing.JLabel bestPlayerLBL;
-    private javax.swing.JLabel bestTimeLBL;
+    private javax.swing.JLabel bestScoreLBL;
+    private javax.swing.JLabel bestTimeLBL1;
     private javax.swing.JLabel completedLevelsLBL;
     private javax.swing.JLabel firesExtinguishedLBL;
     private javax.swing.JLabel totalGamesLBL;
