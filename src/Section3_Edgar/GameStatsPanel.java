@@ -17,6 +17,7 @@ import java.util.*;
  */
 public class GameStatsPanel extends javax.swing.JPanel{
     
+   //defining first an instance of the navController interface to switch screens
     private NavController navigator;
 
    
@@ -183,9 +184,9 @@ public class GameStatsPanel extends javax.swing.JPanel{
     }
     
     public void loadStatistics(){
-        ArrayList<String> userList = readAllUsers();
+        ArrayList<String> playersRegister = readAllPlayersAdded();
 
-        if (userList.isEmpty()) {
+        if (playersRegister.isEmpty()) {
             achievementsTXT.setText("No users found in users.txt");
             bestPlayerLBL.setText("Best Player: -");
             totalGamesLBL.setText("Total Games: 0");
@@ -198,8 +199,8 @@ public class GameStatsPanel extends javax.swing.JPanel{
         }
         ArrayList<PlayerStats> allPlayersStats = new ArrayList<>();
 
-        for (String username : userList) {
-            PlayerStats stats = buildStatsForPlayer(username);
+        for (String player : playersRegister) {
+            PlayerStats stats = makeStatsForPlayer(player);
             if (stats.totalGames > 0) {
                 allPlayersStats.add(stats);
             }
@@ -240,7 +241,9 @@ public class GameStatsPanel extends javax.swing.JPanel{
         }
    }
     
-    private ArrayList<String> readAllUsers() {
+    //this method is gonna read the file that keeps all the users added in the main menu panel
+    // useful to get the best player later
+    private ArrayList<String> readAllPlayersAdded() {
         ArrayList<String> users = new ArrayList<>();
 
         File file = new File("users.txt");
@@ -262,13 +265,11 @@ public class GameStatsPanel extends javax.swing.JPanel{
         return users;
     }
     
-    private PlayerStats buildStatsForPlayer(String username) {
-        PlayerStats stats = new PlayerStats();
-        stats.username = username;
-        stats.bestTime = Integer.MAX_VALUE;
+    private PlayerStats makeStatsForPlayer(String username) {
+        PlayerStats stats = new PlayerStats(username);
 
-    // 1. Read all games for this user
-        ArrayList<String> games = readUserGames(username);
+    // Read all games for this user and getting totalScore, bestScore and bestTime
+        ArrayList<String> games = readAllGames(username);
         stats.totalGames = games.size();
 
         for (String gameLine : games) {
@@ -286,22 +287,20 @@ public class GameStatsPanel extends javax.swing.JPanel{
 
         if (stats.bestTime == Integer.MAX_VALUE) stats.bestTime = 0;
 
-    // 2. Read extra user stats from username_stats.txt
+    //  Reading stats from username_stats.txt to get CompletedLevels or FiresExtinguished
         File statsFile = new File(username + "_stats.txt");
         if (statsFile.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(statsFile))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(":");
-                    if (parts.length == 2) {
-                        String key = parts[0].trim();
-                        String value = parts[1].trim();
 
-                        if (value.equals("CompletedLevels")) {
-                            stats.completedLevels = Integer.parseInt(value);
-                        } else if (value.equals("FiresExtinguished")) {
-                            stats.firesExtinguished = Integer.parseInt(value);
-                        }
+                    if (line.startsWith("CompletedLevels:")) {
+                        String number = line.replace("CompletedLevels:", "").trim();
+                        stats.completedLevels = Integer.parseInt(number);
+                    }
+                    else if (line.startsWith("FiresExtinguished:")) {
+                        String number = line.replace("FiresExtinguished:", "").trim();
+                        stats.firesExtinguished = Integer.parseInt(number);
                     }
                 }
             } catch (IOException e) {
@@ -312,7 +311,9 @@ public class GameStatsPanel extends javax.swing.JPanel{
         return stats;
     }
     
-    private ArrayList<String> readUserGames(String username) {
+    //duplicating the method from ResultStats
+    //to get every game in a file and returning a list, every file is a single player, this wil be useful to get the best player
+    private ArrayList<String> readAllGames(String username) {
         ArrayList<String> games = new ArrayList<>();
         File file = new File(username + "_games.txt");
 

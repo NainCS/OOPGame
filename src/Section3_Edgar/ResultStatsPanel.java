@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class ResultStatsPanel extends javax.swing.JPanel {
     
+    //defining first an instance of the navController interface and the currentUser
     private NavController navigator;
     private String currentUser;
 
@@ -227,22 +228,26 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_backBTNActionPerformed
 
+    //here we called savePlayerstats
     private void saveBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBTNActionPerformed
         // TODO add your handling code here:
         savePlayerStats(currentUser);
     }//GEN-LAST:event_saveBTNActionPerformed
-
+    
+    //here we are gonna reload everything from the files, for a specific user
     private void refreshStatsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshStatsBTNActionPerformed
         // TODO add your handling code here:
         loadPlayerStats(currentUser);
     }//GEN-LAST:event_refreshStatsBTNActionPerformed
 
     // Each string of the list is gonna be a game played - tracking of the games (win - lost)
-    private List<String> readUserGames(String username){
-        List<String> games = new ArrayList<>();
+    //Useful for calculating totalstats, bestscore, and so on in the load method
+    //This same method can be used in GameStatsPanel, duplicating it so its avoid the creation of more classes
+    private ArrayList<String> readAllGames(String username){
+        ArrayList<String> games = new ArrayList<>();
         try{
             File game = new File(username + "_games.txt");
-            //this needs to be appended by section 2 - Game logic
+            //this needs to be appended by section 2 - Game logic so we can keep track of the wins
             if(!game.exists()){
                 return games;
             }
@@ -257,7 +262,7 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         } catch (IOException e){
             System.out.println("Error reading games: " + e.getMessage());
         }
-        return games;
+        return games;   //getting all the games played by the user
     }
     
     //overwrites the file that section 1 creates, to keep track of the user
@@ -280,10 +285,11 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         }
     }
     
-     //This method is in charge of displaying the information
+     //This method is in charge of displaying the information and can be called from other panels
+     //also calculates values such as totalscore, bestscore values
      public void loadPlayerStats(String username) {
         this.currentUser = username;
-        titleLBL.setText("Result - Player Statistics - " + username);
+        titleLBL.setText("Player Statistics - " + username);
         
         try {
             File statsFile = new File(username + "_stats.txt");
@@ -292,26 +298,26 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                 String line;
                 
                 while ((line = reader.readLine()) != null) {
-                    String[] textParts = line.split(":");
-                    if (textParts.length == 2) {
-                        switch (textParts[0]) {
+                    String[] statsTextParts = line.split(":");
+                    if (statsTextParts.length == 2) {
+                        switch (statsTextParts[0]) {
                             case "Username":
                                 break;
                             case "Level":
-                                levelLBL.setText("Level: " + textParts[1]);
+                                levelLBL.setText("Level: " + statsTextParts[1]);
                                 break;
                             case "Score":
-                                currentScoreLBL.setText("Current Score: " + textParts[1]);
+                                currentScoreLBL.setText("Current Score: " + statsTextParts[1]);
                                 break;
                             case "Lives":
-                                livesLBL.setText("Lives: " + textParts[1]);
+                                livesLBL.setText("Lives: " + statsTextParts[1]);
                                 break;
                             case "Water":
-                                waterLBL.setText("Water: " + textParts[1]);
+                                waterLBL.setText("Water: " + statsTextParts[1]);
                                 break;
                             case "Experience":
-                                experienceBar.setValue(Integer.parseInt(textParts[1]));
-                                experienceBar.setString("Experience: " + textParts[1] + "%");
+                                experienceBar.setValue(Integer.parseInt(statsTextParts[1]));
+                                experienceBar.setString("Experience: " + statsTextParts[1] + "%");
                                 break;
                         }
                     }
@@ -322,10 +328,10 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             System.out.println("Error loading player stats: " + e.getMessage());
         }
         
-    
-        List<String> games = readUserGames(this.currentUser);
+        //restore the last gamesStats for a player (win-lose) in case hasnt played yet
+        List<String> allGames = readAllGames(this.currentUser);
         
-        if (games.isEmpty()) {
+        if (allGames.isEmpty()) {
             historyOfGameTA.setText("No games played yet for: " + username);
             totalGamesLBL.setText("Total Games Played: 0");
             bestScoreLBL.setText("Best Score: 0");
@@ -334,18 +340,18 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             return;
         }
         
-        int totalGames = games.size();
+        int totalGames = allGames.size();
         int bestScore = 0;
         int totalScore = 0;
         int bestTime = Integer.MAX_VALUE;
         StringBuilder historyText = new StringBuilder();
         
-        for (String game : games) {
-            String[] parts = game.split(",");
-            if (parts.length >= 3) {
-                int score = Integer.parseInt(parts[0]);
-                int time = Integer.parseInt(parts[1]);
-                String result = parts[2];
+        for (String game : allGames) {
+            String[] statsOfGame = game.split(",");
+            if (statsOfGame.length >= 3) {
+                int score = Integer.parseInt(statsOfGame[0]);
+                int time = Integer.parseInt(statsOfGame[1]);
+                String result = statsOfGame[2];
                 
                 historyText.append("Score: ").append(score)
                           .append(" | Time: ").append(time).append("s")
@@ -366,6 +372,7 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         historyOfGameTA.setText(historyText.toString());
     }
      
+     //can be called from section2 in the gamePanel, it updates the stats of the player in the game
      public void updatePlayerStats(String username, int level, int score, int lives, int water, int experience) {
         this.currentUser = username;
         levelLBL.setText("Level: " + level);

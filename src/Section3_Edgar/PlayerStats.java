@@ -9,6 +9,14 @@ package Section3_Edgar;
  * @author Edgar Camacho
  */
 public class PlayerStats {
+
+    public PlayerStats(String username) {
+        this.username = username;
+        this.bestTime = bestTime;
+    }
+
+    public PlayerStats() {
+    }
     String username;
     int totalGames;
     int totalScore;
