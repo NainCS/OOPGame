@@ -83,7 +83,7 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         return gameController;
     }
 
-    public void showResultsStats(String playerName) {
+    public void showResultStats(String playerName) {
     System.out.println("MainFrame: Showing stats for " + playerName);
    
     if (resultStatsPanel != null) {

@@ -278,7 +278,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
             File playerFile = new File(playerName + "_stats.txt"); //create a file when player is registered
             if(playerFile.exists()) {
                 System.out.println("Loading stats for: " + playerName); 
-                mainFrame.showResultsStats(playerName); //shown specific player result in resultStats page
+                mainFrame.showResultStats(playerName); //shown specific player result in resultStats page
             } else {
                 displayTA.setText("Player '" + playerName + "' not found. Please ADD player first.");
                 System.out.println("File not found: " + playerFile.getAbsolutePath()); // Debug
