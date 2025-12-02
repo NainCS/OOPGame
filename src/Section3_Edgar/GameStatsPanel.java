@@ -51,7 +51,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
         achievementsTXT = new javax.swing.JTextArea();
         bestPlayerLBL = new javax.swing.JLabel();
         achievementsLBL = new javax.swing.JLabel();
-        bestTimeLBL1 = new javax.swing.JLabel();
+        bestTimeLBL = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(139, 174, 102));
         setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.MatteBorder(null), javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153))));
@@ -107,10 +107,10 @@ public class GameStatsPanel extends javax.swing.JPanel{
         achievementsLBL.setForeground(new java.awt.Color(250, 250, 250));
         achievementsLBL.setText("Achievements:");
 
-        bestTimeLBL1.setBackground(new java.awt.Color(255, 255, 255));
-        bestTimeLBL1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        bestTimeLBL1.setForeground(java.awt.Color.white);
-        bestTimeLBL1.setText("Best Time: ");
+        bestTimeLBL.setBackground(new java.awt.Color(255, 255, 255));
+        bestTimeLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bestTimeLBL.setForeground(java.awt.Color.white);
+        bestTimeLBL.setText("Best Time: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,7 +133,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(totalScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(bestScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bestTimeLBL1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bestTimeLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(completedLevelsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(firesExtinguishedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(172, 172, 172)
@@ -160,7 +160,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
                         .addGap(28, 28, 28)
                         .addComponent(bestScoreLBL)
                         .addGap(27, 27, 27)
-                        .addComponent(bestTimeLBL1)
+                        .addComponent(bestTimeLBL)
                         .addGap(18, 18, 18)
                         .addComponent(completedLevelsLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -192,7 +192,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
             totalGamesLBL.setText("Total Games: 0");
             totalScoreLBL.setText("Total Score: 0");
             bestScoreLBL.setText("Best Score: 0");
-            bestTimeLBL1.setText("Best Time: 0s");
+            bestTimeLBL.setText("Best Time: 0s");
             completedLevelsLBL.setText("Completed Levels: 0");
             firesExtinguishedLBL.setText("Fires Extinguished: 0");
             return;
@@ -222,7 +222,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
         totalGamesLBL.setText("Total Games: " + best.totalGames);
         totalScoreLBL.setText("Total Score: " + best.totalScore);
         bestScoreLBL.setText("Best Score: " + best.bestScore);
-        bestTimeLBL1.setText("Best Time: " + best.bestTime + "s");
+        bestTimeLBL.setText("Best Time: " + best.bestTime + "s");
         completedLevelsLBL.setText("Completed Levels: " + best.completedLevels);
         firesExtinguishedLBL.setText("Fires Extinguished: " + best.firesExtinguished);
         
@@ -343,7 +343,7 @@ public class GameStatsPanel extends javax.swing.JPanel{
     private javax.swing.JButton backBTN;
     private javax.swing.JLabel bestPlayerLBL;
     private javax.swing.JLabel bestScoreLBL;
-    private javax.swing.JLabel bestTimeLBL1;
+    private javax.swing.JLabel bestTimeLBL;
     private javax.swing.JLabel completedLevelsLBL;
     private javax.swing.JLabel firesExtinguishedLBL;
     private javax.swing.JLabel totalGamesLBL;
