@@ -4,7 +4,10 @@
  */
 package Section1_Sam; //Sook Ying Sam
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -299,6 +302,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
             Player tempP = new Player(name);
             register.add(tempP);
             savePlayerToFile(tempP);  
+            saveUsersforGameStats(tempP.getName());
             displayTA.setText("New Player Registered: " + name);
         }        
     }//GEN-LAST:event_addBTNActionPerformed
@@ -342,22 +346,47 @@ public class MainMenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_nameTFActionPerformed
     //save the player's stats into a text file
     private void savePlayerToFile(Player player) {
-    try {
-        File file = new File(player.getName() + "_stats.txt");
-        PrintWriter writer = new PrintWriter(new FileWriter(file)); //opens a "writer" that can write text into the file
+        try {
+            File file = new File(player.getName() + "_stats.txt");
+            PrintWriter writer = new PrintWriter(new FileWriter(file)); //opens a "writer" that can write text into the file
         
-        //write default starting stats for the player
-        writer.println("Level:1");
-        writer.println("Score:0");
-        writer.println("Lives:3");
-        writer.println("Water:100");
-        writer.println("Experience:0");
+            //write default starting stats for the player
+            writer.println("Level:1");
+            writer.println("Score:0");
+            writer.println("Lives:3");
+            writer.println("Water:100");
+            writer.println("Experience:0");
         
-        writer.close(); //saves and closes the file
-    } catch (IOException e) {
-        System.out.println("Error saving player: " + e.getMessage());
+            writer.close(); //saves and closes the file
+        } catch (IOException e) {
+            System.out.println("Error saving player: " + e.getMessage());
+        }
     }
-}
+    
+    //This method is gonna create a users txt and be called at the moment of adding a player, to be used in gamestatspanel
+    private void saveUsersforGameStats(String username) {
+        File file = new File("users.txt");
+        try {
+            if (file.exists()) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        if (line.trim().equalsIgnoreCase(username.trim())) {
+                            return;
+                        }
+                    }
+                }
+            }
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
+                writer.write(username);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error updating users.txt: " + e.getMessage());
+            displayTA.setText("Error updating users.txt");
+        }
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

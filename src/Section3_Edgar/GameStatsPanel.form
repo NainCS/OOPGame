@@ -63,7 +63,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="totalScoreLBL" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
                                   <Component id="bestScoreLBL" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
-                                  <Component id="bestTimeLBL1" min="-2" pref="302" max="-2" attributes="0"/>
+                                  <Component id="bestTimeLBL" min="-2" pref="302" max="-2" attributes="0"/>
                                   <Component id="completedLevelsLBL" alignment="0" min="-2" pref="324" max="-2" attributes="0"/>
                                   <Component id="firesExtinguishedLBL" min="-2" pref="363" max="-2" attributes="0"/>
                               </Group>
@@ -101,7 +101,7 @@
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="bestScoreLBL" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="bestTimeLBL1" min="-2" max="-2" attributes="0"/>
+                      <Component id="bestTimeLBL" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="completedLevelsLBL" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -242,7 +242,7 @@
         <Property name="text" type="java.lang.String" value="Achievements:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="bestTimeLBL1">
+    <Component class="javax.swing.JLabel" name="bestTimeLBL">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
