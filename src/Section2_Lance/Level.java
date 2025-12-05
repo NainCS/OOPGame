@@ -14,7 +14,7 @@ import java.util.List;
 public class Level {
     private int levelNumber;
     private String name;
-    private List<Object> objects; // holds GameObject instances (Trees, Fire, Water, etc.)
+    private List<Object> objects; 
     private double gameTimer;
     private int totalFires;
     private int extinguishedFires;
@@ -110,7 +110,6 @@ public class Level {
     }
 
 
-    // objects management (assumes objects are GameObject instances)
     public void addObject(Object obj) { 
         this.objects.add(obj); 
     }
@@ -119,18 +118,14 @@ public class Level {
         return objects;
     }
 
-    // convenience getters (stubs — adjust according to your GameObject API)
     public int[] getFires() {
-        // return array of fire IDs or locations; placeholder:
         return new int[0];
     }
 
     public Object getPlayer() {
-        // Level may hold a player object or GamePanel may create it — placeholder:
         return null;
     }
 
-    // Call each frame to update internal timers/conditions (optional)
     public void updateLevelState(double deltaSeconds) {
         if (gameTimer > 0) {
             gameTimer -= deltaSeconds;

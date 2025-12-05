@@ -58,9 +58,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="levelLBL" min="-2" pref="297" max="-2" attributes="0"/>
-                                  <Component id="waterLBL" alignment="0" min="-2" pref="356" max="-2" attributes="0"/>
-                                  <Component id="livesLBL" min="-2" pref="264" max="-2" attributes="0"/>
+                                  <Component id="levelscompletedLBL" min="-2" pref="297" max="-2" attributes="0"/>
+                                  <Component id="waterusedLBL" alignment="0" min="-2" pref="356" max="-2" attributes="0"/>
+                                  <Component id="livesusedLBL" min="-2" pref="264" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -72,13 +72,7 @@
                       <Component id="titleLBL" min="-2" pref="559" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="601" max="-2" attributes="0"/>
-                      <Component id="experienceBar" min="-2" pref="285" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                      <Component id="nextlevelBTN" min="-2" pref="213" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="519" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="refreshStatsBTN" min="-2" pref="213" max="-2" attributes="0"/>
@@ -110,13 +104,13 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                      <Component id="livesLBL" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="livesusedLBL" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="levelLBL" min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="levelscompletedLBL" min="-2" pref="56" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -129,22 +123,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="waterLBL" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="waterusedLBL" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bestTimeLBL" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="113" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-              <Component id="experienceBar" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace pref="141" max="32767" attributes="0"/>
+              <EmptySpace pref="230" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="186" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="refreshStatsBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="saveBTN" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nextlevelBTN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
           </Group>
@@ -241,7 +232,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBTNActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="levelLBL">
+    <Component class="javax.swing.JLabel" name="levelscompletedLBL">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -249,7 +240,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Level: "/>
+        <Property name="text" type="java.lang.String" value="Levels Completed: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="currentScoreLBL">
@@ -263,7 +254,7 @@
         <Property name="text" type="java.lang.String" value="Current Score:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="livesLBL">
+    <Component class="javax.swing.JLabel" name="livesusedLBL">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -271,10 +262,10 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Lives: "/>
+        <Property name="text" type="java.lang.String" value="Lives Used: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="waterLBL">
+    <Component class="javax.swing.JLabel" name="waterusedLBL">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -282,10 +273,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Water: "/>
+        <Property name="text" type="java.lang.String" value="Water Used: "/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="experienceBar">
     </Component>
     <Component class="javax.swing.JButton" name="refreshStatsBTN">
       <Properties>
@@ -319,22 +308,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="nextlevelBTN">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="3b" green="5c" red="0" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="24" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Next Level"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextlevelBTNActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>

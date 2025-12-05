@@ -39,12 +39,17 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
     private CollisionDetector detector = new CollisionDetector();
 
     // HUD & Game variables
-    private Timer frameTimer;          // 60 FPS
-    private Timer oneSecondTimer;      // updates timeRemaining
+    private Timer frameTimer;         
+    private Timer oneSecondTimer;     
     private int score = 0;
     private int lives;
     private int water;
+    private int waterUsed = 0;
+    private int sessionFires;
     private int timeRemaining;
+    private int firesExtinguished = 0;
+    private int livesLost;
+    private int timeUsed = 0;
     private String currentUser;
 
     
@@ -53,14 +58,15 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         this.navigator = navigator;
         this.level = level;
         this.currentUser = username;
+        this.levelNumber = level.getLevelNumber();
 
 
         fires = new ArrayList<>();
         trees = new ArrayList<>();
 
-        initComponents();  // UI
-        setupGame();       // Create player, fires, trees
-        setupTimers();     // 60fps + 1 second timer
+        initComponents(); 
+        setupGame();       
+        setupTimers();   
 
         setFocusable(true);
         requestFocusInWindow();
@@ -76,12 +82,12 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
 
         waterSpray = new WaterSpray(100, 20, 1, 100, 0, 0, 20, 20);
 
-        // Load HUD values from Level
+        // Loads hud values from the Level class
         this.timeRemaining = (int) level.getGameTimer();
         this.water = level.getWater();
         this.lives = level.getLives();
 
-        // Load objects
+        // Loads objects
         for (Object obj : level.getObjects()) {
 
             if (obj instanceof Fire f)
@@ -91,39 +97,10 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
                 trees.add(t);
         }
 
-        // Set total fire count in case level didn't calculate it
         level.setTotalFires(fires.size());
     }
-
-    public int getLevelNumber() {
-        return level.getLevelNumber();
-    }
     
-    private int calculateExperience() {
-        int xp = 0;
-
-        // Base score:
-        xp += score;
-
-        // Bonus for remaining lives:
-        xp += lives * 50;
-
-        // Bonus for time left (avoid negative just in case):
-        if (timeRemaining > 0) {
-            xp += timeRemaining * 2;
-        }
-
-        // Bonus for water left:
-        if (water > 0) {
-            xp += water;
-        }
-
-        // No negative XP:
-        return Math.max(0, xp);
-    }
-    
-    
-    // Timers
+    // Timer setups
     private void setupTimers() {
 
         frameTimer = new Timer(16, this);
@@ -153,15 +130,12 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         oneSecondTimer.start();
     }
 
-    // Request focus TWICE (guarantees focus return)
+    // Request focus to the window to make sure that player inputs will work
     this.setFocusable(true);
     this.requestFocusInWindow();
     SwingUtilities.invokeLater(() -> this.requestFocusInWindow());
-}
+    }
 
-    // ==============================
-    //  GAME LOOP
-    // ==============================
     @Override
     public void actionPerformed(ActionEvent e) {
         updatePlayerMovement();
@@ -183,7 +157,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
 
         player.update();
 
-        // Stop movement into trees
+        // Blocks movement through trees
         for (Trees t : trees) {
             if (detector.checkCollision(player, t)) {
                 player.setPosition(oldX, oldY);
@@ -191,11 +165,12 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
             }
         }
 
-        // Fire collision (lose life)
+        // Makes the player lose a life when colliding with fire and then reduces their total lives by 1
         for (Fire f : fires) {
             if (!f.isExtinguished() && detector.checkCollision(player, f)) {
 
                 lives--;
+                livesLost++;
 
                 if (lives <= 0) {
                     levelFailed("You lost all your lives!");
@@ -220,12 +195,10 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         levelLBL.setText("LEVEL: " + levelNumber);
     }
 
-    // ---------------------------
-    //  COLLISION HANDLING + level logi
-    // ---------------------------
+    // Collision related methods
     private void checkCollisions() {
 
-        // Water → Fire
+        // Water extinguishing fire relation
         if (waterSpray.getActive()) {
             for (Fire f : fires) {
 
@@ -235,17 +208,18 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
                     score += 10;
 
                     level.setExtinguishedFires(level.getExtinguishedFires() + 1);
+                    firesExtinguished++;
                 }
             }
         }
 
-        // Water fail
+        // Makes it so if you run out of water, you lose the game
         if (water <= 0) {
             levelFailed("You ran out of water!");
             return;
         }
 
-        // Level complete
+        // The level is completed when all fires are extinguished
         if (level.getExtinguishedFires() >= level.getTotalFires()) {
             levelComplete();
         }
@@ -258,6 +232,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         }
 
         water -= 1;
+        waterUsed++;
 
         int px = player.getPositionX();
         int py = player.getPositionY();
@@ -266,13 +241,13 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         int sw = waterSpray.getWidth();
         int sh = waterSpray.getHeight();
 
-        int sx = px; // default
+        int sx = px;
         int sy = py;
 
         switch (facing) {
             case "UP" -> {
                 sx = px + pw/2 - sw/2;
-                sy = py - sh - 10; // slightly above
+                sy = py - sh - 10;
             }
             case "DOWN" -> {
                 sx = px + pw/2 - sw/2;
@@ -292,90 +267,65 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         waterSpray.setActive(true);
     }
     
-    // ---------------------------
-    //  LEVEL MANAGEMENT
-    // ---------------------------
+    // Level Management Section
     private void levelComplete() {
         frameTimer.stop();
         oneSecondTimer.stop();
 
-        // calculate stats for ResultStatsPanel
-        int experience = calculateExperience();
+        JOptionPane.showMessageDialog(
+                this,
+                "Level Complete!\nPress OK to continue.",
+                "Level Complete",
+                JOptionPane.INFORMATION_MESSAGE
+        );
 
-        // if Level has a total time, we can compute time used
-        int timeUsed;
-        try {
-            timeUsed = (int) level.getGameTimer() - timeRemaining;
-        } catch (Exception ex) {
-            // fallback if Level doesn't have getGameTimer
-            timeUsed = timeRemaining; // or 0, depending on how you want it
-        }
+        // Update session stats
+        int timeUsed = (int) level.getGameTimer() - timeRemaining;
         if (timeUsed < 0) timeUsed = 0;
 
-        javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "Congratulations! You extinguished all fires!\nLevel Complete!",
-            "Level Complete",
-            javax.swing.JOptionPane.INFORMATION_MESSAGE
-        );
+        navigator.updateSessionStats(score, timeUsed, firesExtinguished);
 
-        // NEW: tell the navigation controller to show ResultStats with this data
-        navigator.showResultsStatsFromGame(
-            currentUser,
-            levelNumber,
-            score,
-            lives,
-            water,
-            experience,
-            timeUsed,
-            "Win"
-        );
+        navigator.levelCompleted(level.getLevelNumber());
+
+        navigator.startNextLevel();
     }
 
     private void levelFailed(String reason) {
+
         frameTimer.stop();
         oneSecondTimer.stop();
 
-        int experience = calculateExperience();
-        int timeUsed;
-        try {
-            timeUsed = (int) level.getGameTimer() - timeRemaining;
-        } catch (Exception ex) {
-            timeUsed = timeRemaining;
-        }
+        JOptionPane.showMessageDialog(
+                this,
+                reason,
+                "Level Failed",
+                JOptionPane.ERROR_MESSAGE
+        );
+
+        // Will update the current player's session stats even if they fail a level
+        int timeUsed = (int) level.getGameTimer() - timeRemaining;
         if (timeUsed < 0) timeUsed = 0;
 
-        javax.swing.JOptionPane.showMessageDialog(
-            this,
-            reason,
-            "Level Failed",
-            javax.swing.JOptionPane.ERROR_MESSAGE
-        );
+        navigator.updateSessionStats(score, timeUsed, firesExtinguished);
 
-        navigator.showResultsStatsFromGame(
-            currentUser,
-            levelNumber,
-            score,
-            lives,
-            water,
-            experience,
-            timeUsed,
-            "Lose"
-        );
+        JOptionPane.showMessageDialog(this,
+        "Game Over. Returning to the main menu.",
+        "Your game sesssion has ended.",
+        JOptionPane.INFORMATION_MESSAGE);
+
+        // Send to results panel (end of session)
+        navigator.switchScreen("MainMenu");
     }
-
-    // ---------------------------
-    //  DRAWING
-    // ---------------------------
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Background
+        // Background colour
         g.setColor(new Color(80, 150, 80));
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        // Draw objects
+        // Draws the objects
         player.draw(g);
         waterSpray.draw(g);
 
@@ -383,9 +333,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         for (Trees t : trees) t.draw(g);
     }
 
-    // ---------------------------
-    //  INPUT
-    // ---------------------------
+    // User input section for keys pressed etc.
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -407,27 +355,6 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
             }
 
             case KeyEvent.VK_SPACE -> sprayWater();
-//            {
-//                if (water > 0){
-//                    water -= 1;
-//                    int px = player.getPositionX();
-//                    int py = player.getPositionY();
-//                    int pw = player.getWidth();
-//                    int ph = player.getHeight();
-//
-//                    int sw = waterSpray.getWidth();
-//                    int sh = waterSpray.getHeight();
-//
-//                    // Center the spray over the player
-//                    int centeredX = px + (pw / 2) - (sw / 2);
-//                    int centeredY = py + (ph / 2) - (sh / 2);
-//
-//                    waterSpray.setPosition(centeredX, centeredY);
-//                    waterSpray.setActive(true);
-//                }else{
-//                    levelFailed("You ran out of water!");
-//                }
-//            }
         }
     }
 
@@ -444,7 +371,46 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
     }
 
     @Override
-    public void keyTyped(KeyEvent e) { }
+    public void keyTyped(KeyEvent e) { 
+    
+    }
+    
+    public int getScore() {
+        return score;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public int getWater() {
+        return water;
+    }
+
+    public int getTimeRemaining() {
+        return timeRemaining;
+    }
+
+    public int getLevelNumber() {
+        return level.getLevelNumber();
+    }
+
+    public int getWaterUsed() {
+        return waterUsed;
+    }
+    
+    public int getFiresExtinguished() {
+        return firesExtinguished;
+    }
+    
+    public int getLivesLost() {
+        return livesLost;
+    }
+    
+    public int getTimeUsed() {
+        return timeUsed;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

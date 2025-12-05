@@ -31,7 +31,7 @@ public abstract class GameObject implements CollisionActions{
     public GameObject(int positionX, int positionY, int width, int height) {
         this.positionX = positionX;
         this.positionY = positionY;
-        this.width = width;      // FIXED: width now matches parameter
+        this.width = width;
         this.height = height;
         this.edges = new Rectangle(positionX, positionY, width, height);
     }
@@ -46,7 +46,6 @@ public abstract class GameObject implements CollisionActions{
     
     @Override
     public void resolveCollision(){
-        //Collisions are gonna be handled by every class that inherits this feature
     } 
     
     public abstract void draw(Graphics g);

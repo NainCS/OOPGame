@@ -37,9 +37,8 @@ public class LevelManager implements GamePlayActions {
                 line = line.trim();
                 if (line.isEmpty() || line.startsWith("//")) continue;
 
-                // ---------------------
                 // LEVEL SETTINGS
-                // ---------------------
+                
                 if (line.startsWith("TIME=")) {
                     level.setGameTimer(Integer.parseInt(line.substring(5)));
                     continue;
@@ -53,9 +52,8 @@ public class LevelManager implements GamePlayActions {
                     continue;
                 }
 
-                // ---------------------
-                // FIRE
-                // ---------------------
+                // Fires
+
                 if (line.startsWith("FIRE")) {
                     String[] p = line.split(" ");
                     int x = Integer.parseInt(p[1]);
@@ -64,9 +62,9 @@ public class LevelManager implements GamePlayActions {
                     continue;
                 }
 
-                // ---------------------
-                // TREE
-                // ---------------------
+
+                // Trees
+                
                 if (line.startsWith("TREE")) {
                     String[] p = line.split(" ");
                     int x = Integer.parseInt(p[1]);
@@ -84,9 +82,7 @@ public class LevelManager implements GamePlayActions {
         return level;
     }
 
-    // ============================================================
     //  GamePlayActions interface methods
-    // ============================================================
 
     private int extractNumberFromFilename(String name) {
         try {
@@ -98,18 +94,14 @@ public class LevelManager implements GamePlayActions {
     
     @Override
     public void startLevel(int levelNumber) {
-        // GamePanel handles actual gameplay. This method only exists
-        // to satisfy the interface for assignment requirements.
     }
 
     @Override
     public void pauseGame() {
-        // You can optionally add logic here, but GamePanel already handles pause.
     }
 
     @Override
     public void resumeGame() {
-        // GamePanel resumes timers; nothing to do here.
     }
 
     @Override

@@ -18,7 +18,7 @@ public class AchievementManager {
         if (stats.totalGames >= 1){
             unlocked.add(new Achievement(
                     "FIRST_GAME",
-                    "First_Game",
+                    "First Game",
                     "Completed your first game."
             ));
         }
@@ -40,15 +40,15 @@ public class AchievementManager {
             ));
         }
 
-        if (stats.bestTime > 0 && stats.bestTime <= 60) {
+        if (stats.bestTime > 0 && stats.bestTime <= 20) {
             unlocked.add(new Achievement(
                 "SPEED_RUN",
                 "Fast Player",
-                "Finished a game in 60 seconds or less."
+                "Finished a game in 20 seconds or less."
             ));
         }
 
-        if (stats.firesExtinguished >= 20) {
+        if (stats.firesExtinguished >= 50) {
             unlocked.add(new Achievement(
                 "FIRE_HERO",
                 "Firefighter Master",

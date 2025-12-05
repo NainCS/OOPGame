@@ -147,11 +147,11 @@ public class Trees extends GameObject{
                 }
             }
             
-            // Draw trunk 
-            g.setColor(new Color(140, 70, 20)); // Brown
+            // Draws the trunk of the tree
+            g.setColor(new Color(140, 70, 20));
             g.fillRect(positionX + width/3, positionY + height/2, width/3, height/2);
             
-            // Draw foliage
+            // Draws the leaves
             if (onFire) {
                 g.setColor(Color.ORANGE); 
             } else {

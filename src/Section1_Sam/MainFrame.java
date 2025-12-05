@@ -40,7 +40,18 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     private int currentLevel = 1;
     private LevelManager levelManager;
     
+    private int sessionScore = 0;
+    private int sessionTime = 0;
+    private int sessionFires = 0;
+    private int sessionLevelsCompleted = 0;
+    private int sessionWaterUsed = 0;
+    
+    
     private String currentUserName = "";
+    public void setCurrentUser(String username) {
+        this.currentUserName = username;
+    }
+
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
@@ -80,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         showScreen("MainMenu");
     }
     
-    // Called when user picks a level
+    // This method gets called when a level is chosen by the user
     public void startLevel(int levelNumber) {
 
         currentLevel = levelNumber;
@@ -90,20 +101,64 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         if (gamePanel != null)
             mainPanel.remove(gamePanel);
 
-        gamePanel = new GamePanel(this, level, currentUserName);
+            gamePanel = new GamePanel(this, level, currentUserName);
 
-        mainPanel.add(gamePanel, "Game");
-        gamePanel.startGame();
+            mainPanel.add(gamePanel, "Game");
+            gamePanel.startGame();
 
-        switchScreen("Game");
-        gamePanel.requestFocusInWindow();
+            switchScreen("Game");
+            gamePanel.requestFocusInWindow();
+            
+        if (levelNumber == 1) {
+            sessionScore = 0;
+            sessionTime = 0;
+            sessionFires = 0;
+            sessionLevelsCompleted = 0;
+        }
+
     }
     
+    @Override
+    public void updateSessionStats(int score, int time, int fires) {
+        sessionScore += score;
+        sessionTime += time;
+        sessionFires += fires;
+    }
+
+
+    @Override
+    public void levelCompleted(int lvl) {
+        sessionLevelsCompleted++;
+    }
+
+    
+    @Override
     public void startNextLevel() {
         int next = currentLevel + 1;
 
-        if (next > 3) { // assuming you have 3 levels
-            JOptionPane.showMessageDialog(null, "All levels complete!");
+        if (next > 3) {
+
+            // Save the lifetime stats for GameStatsPanel and PlayerStats
+            saveLifetimeStats(currentUserName);
+            
+            resultStatsPanel.showSessionStats(
+                currentUserName,
+                sessionScore,
+                sessionTime,
+                sessionFires,
+                sessionLevelsCompleted,
+                sessionWaterUsed
+            );
+
+            JOptionPane.showMessageDialog(
+                null,
+                "Congratulations! You beat all levels!\n" +
+                "Your progress has been saved.\n" +
+                "Return to the Main Menu to view your stats.",
+                "Game Complete",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+
             switchScreen("MainMenu");
             return;
         }
@@ -111,10 +166,36 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         startLevel(next);
     }
     
-    public void levelFinished(int levelNumber) {
-        this.currentLevel = levelNumber;  
-    }
+    private void saveLifetimeStats(String username) {
+        try {
+            FileWriter fw = new FileWriter(username + "_stats.txt");
+            PrintWriter out = new PrintWriter(fw);
 
+            out.println("CompletedLevels:" + sessionLevelsCompleted);
+            out.println("FiresExtinguished:" + sessionFires);
+            out.println("TotalScore:" + sessionScore);
+            out.println("BestTime:" + sessionTime);
+
+            out.close();
+
+        } catch (IOException e) {
+            System.out.println("Error writing player stats: " + e.getMessage());
+        }
+
+        // Appending to the user's game history logs
+        try {
+            FileWriter fw = new FileWriter(username + "_games.txt", true);
+            PrintWriter out = new PrintWriter(fw);
+
+            out.println(sessionScore + "," + sessionTime + ",WIN");
+
+            out.close();
+
+        } catch (IOException e) {
+            System.out.println("Error writing game history: " + e.getMessage());
+        }
+    }
+    
     @Override
     public void switchScreen(String screenName) {
         cardLayout.show(mainPanel, screenName);
@@ -142,59 +223,27 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         return resultStatsPanel;
     }
     
-   
-    
     @Override
-    public void showResultsStatsFromGame(
-            String username,
-            int level,
-            int score,
-            int lives,
-            int water,
-            int experience,
-            int time,
-            String result) {
-        
-        this.currentUserName = username;
+    public void showResultsStatsFromGame(String username, int score, int time, boolean won) {
 
-        // Update Edgar's ResultStatsPanel
-        resultStatsPanel.updatePlayerStats(
-                username,
-                level,
-                score,
-                lives,
-                water,
-                experience
-        );
-        
-        showScreen("ResultStats");
+        // Save game result to the user history
+        resultStatsPanel.recordGameResult(username, score, time, won);
+
+        // Shows the lifetime stats screen
+        switchScreen("ResultStats");
     }
+
     
-    private int calculateExperience(int score,
-                                    int lives,
-                                    int water,
-                                    int timeRemaining,
-                                    int level) {
+    private void saveFinalSessionToFile(String user, int totalScore, int totalLives, int totalWater){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(user + "_session.txt", true))) {
 
-        int exp = 0;
-        exp += score / 10;
-        exp += lives * 5;
-        exp += timeRemaining / 2;
-        if (water > 50) exp += 10;
-        exp += (level - 1) * 10;
+            writer.println("FinalSessionScore=" + totalScore);
+            writer.println("FinalSessionLives=" + totalLives);
+            writer.println("FinalSessionWater=" + totalWater);
+            writer.println("----");
 
-        // clamp 0–100
-        if (exp < 0) exp = 0;
-        if (exp > 100) exp = 100;
-
-        return exp;
-    }
-    
-    private void appendGameResult(String username, int score, int time, String result){
-        try (PrintWriter writer = new PrintWriter(new FileWriter(username + "_games.txt", true))) {
-            writer.println(score + ","+time+","+result);
-        }catch(IOException e){
-            System.out.println("Error saving game result: "+e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error saving session stats: " + e.getMessage());
         }
     }
     

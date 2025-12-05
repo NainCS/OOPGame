@@ -43,15 +43,13 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         totalGamesLBL = new javax.swing.JLabel();
         titleLBL = new javax.swing.JLabel();
         saveBTN = new javax.swing.JButton();
-        levelLBL = new javax.swing.JLabel();
+        levelscompletedLBL = new javax.swing.JLabel();
         currentScoreLBL = new javax.swing.JLabel();
-        livesLBL = new javax.swing.JLabel();
-        waterLBL = new javax.swing.JLabel();
-        experienceBar = new javax.swing.JProgressBar();
+        livesusedLBL = new javax.swing.JLabel();
+        waterusedLBL = new javax.swing.JLabel();
         refreshStatsBTN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         historyOfGameTA = new javax.swing.JTextArea();
-        nextlevelBTN = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,21 +105,21 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             }
         });
 
-        levelLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        levelLBL.setForeground(new java.awt.Color(255, 255, 255));
-        levelLBL.setText("Level: ");
+        levelscompletedLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        levelscompletedLBL.setForeground(new java.awt.Color(255, 255, 255));
+        levelscompletedLBL.setText("Levels Completed: ");
 
         currentScoreLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         currentScoreLBL.setForeground(new java.awt.Color(255, 255, 255));
         currentScoreLBL.setText("Current Score:");
 
-        livesLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        livesLBL.setForeground(new java.awt.Color(255, 255, 255));
-        livesLBL.setText("Lives: ");
+        livesusedLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        livesusedLBL.setForeground(new java.awt.Color(255, 255, 255));
+        livesusedLBL.setText("Lives Used: ");
 
-        waterLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        waterLBL.setForeground(new java.awt.Color(255, 255, 255));
-        waterLBL.setText("Water: ");
+        waterusedLBL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        waterusedLBL.setForeground(new java.awt.Color(255, 255, 255));
+        waterusedLBL.setText("Water Used: ");
 
         refreshStatsBTN.setBackground(new java.awt.Color(0, 92, 59));
         refreshStatsBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -137,16 +135,6 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         historyOfGameTA.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         historyOfGameTA.setRows(5);
         jScrollPane1.setViewportView(historyOfGameTA);
-
-        nextlevelBTN.setBackground(new java.awt.Color(0, 92, 59));
-        nextlevelBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        nextlevelBTN.setForeground(new java.awt.Color(255, 255, 255));
-        nextlevelBTN.setText("Next Level");
-        nextlevelBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextlevelBTNActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -167,21 +155,16 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                                         .addComponent(currentScoreLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(124, 124, 124)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(levelLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(waterLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(livesLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(levelscompletedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(waterusedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(livesusedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(274, 274, 274)
                         .addComponent(titleLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(601, 601, 601)
-                        .addComponent(experienceBar, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(nextlevelBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150)
+                        .addGap(519, 519, 519)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(refreshStatsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,11 +188,11 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                         .addComponent(averageScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(livesLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(livesusedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(levelLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(levelscompletedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(bestScoreLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,19 +202,16 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(waterLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(waterusedLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bestTimeLBL)
                         .addGap(0, 113, Short.MAX_VALUE)))
-                .addGap(50, 50, 50)
-                .addComponent(experienceBar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refreshStatsBTN)
-                    .addComponent(saveBTN)
-                    .addComponent(nextlevelBTN))
+                    .addComponent(saveBTN))
                 .addGap(96, 96, 96))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -254,13 +234,6 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         loadPlayerStats(currentUser);
     }//GEN-LAST:event_refreshStatsBTNActionPerformed
-
-    private void nextlevelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextlevelBTNActionPerformed
-        // TODO add your handling code here:
-        if (navigator instanceof MainFrame frame) {
-        frame.startNextLevel();
-        }
-    }//GEN-LAST:event_nextlevelBTNActionPerformed
 
         //Useful for calculating totalstats, bestscore, and so on in the load method
         //This same method can be used in GameStatsPanel, duplicating it so its avoid the creation of more classes    
@@ -291,24 +264,25 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         try {
             File file = new File(username + "_stats.txt");
             PrintWriter writer = new PrintWriter(new FileWriter(file));
-            
-            writer.println("Username:" + username);
-            writer.println("Level:" + levelLBL.getText().replace("Level: ", ""));
-            writer.println("Score:" + currentScoreLBL.getText().replace("Current Score: ", ""));
-            writer.println("Lives:" + livesLBL.getText().replace("Lives: ", ""));
-            writer.println("Water:" + waterLBL.getText().replace("Water: ", ""));
-            writer.println("Experience:" + experienceBar.getValue());
-            
+
+            writer.println("CompletedLevels:" + levelscompletedLBL.getText().replace("Levels Completed: ", "").trim());
+            writer.println("FiresExtinguished:" + livesusedLBL.getText().replace("Fires Extinguished: ", "").trim());
+            writer.println("WaterUsed:" + waterusedLBL.getText().replace("Water Used: ", "").trim());
+            writer.println("TotalScore:" + currentScoreLBL.getText().replace("Current Score: ", "").trim());
+
             writer.close();
             historyOfGameTA.setText("Player stats saved successfully for: " + username);
+
         } catch (IOException e) {
             historyOfGameTA.setText("Error saving player stats: " + e.getMessage());
         }
     }
+
+
     
     //This method is in charge of displaying the information and can be called from other panels
      //also calculates values such as totalscore, bestscore values     
-     public void loadPlayerStats(String username) {
+    public void loadPlayerStats(String username) {
         this.currentUser = username;
         titleLBL.setText("Player Statistics - " + username);
         
@@ -322,23 +296,20 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                     String[] statsTextParts = line.split(":");
                     if (statsTextParts.length == 2) {
                         switch (statsTextParts[0]) {
-                            case "Username":
+                            case "CompletedLevels":
+                                levelscompletedLBL.setText("Levels Completed: " + statsTextParts[1]);
                                 break;
-                            case "Level":
-                                levelLBL.setText("Level: " + statsTextParts[1]);
+
+                            case "FiresExtinguished":
+                                livesusedLBL.setText("Fires Extinguished: " + statsTextParts[1]);
                                 break;
-                            case "Score":
+
+                            case "WaterUsed":
+                                waterusedLBL.setText("Water Used: " + statsTextParts[1]);
+                                break;
+
+                            case "TotalScore":
                                 currentScoreLBL.setText("Current Score: " + statsTextParts[1]);
-                                break;
-                            case "Lives":
-                                livesLBL.setText("Lives: " + statsTextParts[1]);
-                                break;
-                            case "Water":
-                                waterLBL.setText("Water: " + statsTextParts[1]);
-                                break;
-                            case "Experience":
-                                experienceBar.setValue(Integer.parseInt(statsTextParts[1]));
-                                experienceBar.setString("Experience: " + statsTextParts[1] + "%");
                                 break;
                         }
                     }
@@ -373,15 +344,19 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             if (parts.length >= 3) {
                 int score = Integer.parseInt(parts[0]);
                 int time = Integer.parseInt(parts[1]);
-                String result = parts[2];
-                
+
                 historyText.append("Score: ").append(score)
                           .append(" | Time: ").append(time).append("s")
-                          .append(" | ").append(result).append("\n");
-                
+                          .append(" | ").append(parts[2]).append("\n");
+
+                // Update best score
                 if (score > bestScore) bestScore = score;
+
+                // Add into total for average score later
                 totalScore += score;
-                if (time < bestTime && time > 0) bestTime = time;
+
+                // Update best time
+                if (time > 0 && time < bestTime) bestTime = time;
             }
         }
         
@@ -393,34 +368,54 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         bestTimeLBL.setText("Best Time: " + (bestTime == Integer.MAX_VALUE ? "0" : bestTime) + "s");
         historyOfGameTA.setText(historyText.toString());
     }
-     
-     public void updatePlayerStats(String username, int level, int score, int lives, int water, int experience) {
-        this.currentUser = username;
-        levelLBL.setText("Level: " + level);
-        currentScoreLBL.setText("Current Score: " + score);
-        livesLBL.setText("Lives: " + lives);
-        waterLBL.setText("Water: " + water + "/30");
-        experienceBar.setValue(experience);
-        experienceBar.setString("Experience: " + experience + "%");
+    
+    
+    public void recordGameResult(String username, int score, int time, boolean won) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(username + "_games.txt", true))) {
+            writer.println(score + "," + time + "," + (won ? "Win" : "Lose"));
+        } catch (IOException e) {
+            System.out.println("Error saving game result");
+        }
+        loadPlayerStats(username);
     }
+    
+    public void showSessionStats(String username, int score, int time, int fires, int levels, int waterUsed) {
 
+        this.currentUser = username;
+
+        titleLBL.setText("Session Results - " + username);
+
+        // Updates displayed values
+        currentScoreLBL.setText("Score: " + score);
+        bestTimeLBL.setText("Time: " + time + "s");
+        livesusedLBL.setText("Fires Extinguished: " + fires);
+        levelscompletedLBL.setText("Levels Completed: " + levels);
+        waterusedLBL.setText("Water Used: " + waterUsed);
+
+        historyOfGameTA.setText(
+            "This session summary:\n" +
+            "- Total Score: " + score + "\n" +
+            "- Total Time: " + time + " seconds\n" +
+            "- Fires Extinguished: " + fires + "\n" +
+            "- Levels Completed: " + levels
+        );
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel averageScoreLBL;
     private javax.swing.JButton backBTN;
     private javax.swing.JLabel bestScoreLBL;
     private javax.swing.JLabel bestTimeLBL;
     private javax.swing.JLabel currentScoreLBL;
-    private javax.swing.JProgressBar experienceBar;
     private javax.swing.JTextArea historyOfGameTA;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel levelLBL;
-    private javax.swing.JLabel livesLBL;
-    private javax.swing.JButton nextlevelBTN;
+    private javax.swing.JLabel levelscompletedLBL;
+    private javax.swing.JLabel livesusedLBL;
     private javax.swing.JButton refreshStatsBTN;
     private javax.swing.JButton saveBTN;
     private javax.swing.JLabel titleLBL;
     private javax.swing.JLabel totalGamesLBL;
-    private javax.swing.JLabel waterLBL;
+    private javax.swing.JLabel waterusedLBL;
     // End of variables declaration//GEN-END:variables
 }

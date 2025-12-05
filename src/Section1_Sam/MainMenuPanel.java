@@ -256,16 +256,64 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void playBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBTNActionPerformed
         // TODO add your handling code here:
-        if(mainFrame != null){
-            mainFrame.startLevel(1);
+        String username = nameTF.getText().trim();
+
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Please enter a name before playing.",
+                "Name Required",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
         }
+
+        // Check if the user exists
+        File playerFile = new File(username + "_stats.txt");
+        if (!playerFile.exists()) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Player not found. Please ADD player before starting.",
+                "Player Not Registered",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        // Set this player as the active user
+        mainFrame.setCurrentUser(username);
+
+        // Start the game at level 1
+        mainFrame.startLevel(1);
     }//GEN-LAST:event_playBTNActionPerformed
 
     private void levelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelBTNActionPerformed
         // TODO add your handling code here:
-        if(mainFrame != null){
-            mainFrame.showScreen("LevelSelect");
+        String username = nameTF.getText().trim();
+
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Please enter a name before selecting levels.",
+                "Name Required",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
         }
+
+        File playerFile = new File(username + "_stats.txt");
+        if (!playerFile.exists()) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Player not found. Please ADD player first.",
+                "Player Not Registered",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        mainFrame.setCurrentUser(username);
+        mainFrame.showScreen("LevelSelect");
     }//GEN-LAST:event_levelBTNActionPerformed
 
     private void resultBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultBTNActionPerformed
@@ -280,7 +328,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 mainFrame.showResultsStats(playerName);
             } else {
                 displayTA.setText("Player '" + playerName + "' not found. Please ADD player first.");
-                System.out.println("File not found: " + playerFile.getAbsolutePath()); // Debug
+                System.out.println("File not found: " + playerFile.getAbsolutePath());
             }
         } else {
             displayTA.setText("Please enter a player name first.");

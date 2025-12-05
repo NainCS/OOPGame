@@ -15,7 +15,7 @@ import java.util.List;
 public class CollisionDetector {
 
     public boolean checkCollision(Object obj1, Object obj2) {
-        // try to get bounding rectangles from the objects
+        // Gets the bounds from the rectangle objects
         Rectangle r1 = boundsFrom(obj1);
         Rectangle r2 = boundsFrom(obj2);
         if (r1 == null || r2 == null) return false;
@@ -64,16 +64,13 @@ public class CollisionDetector {
         return distance <= range;
     }
 
-    /**
-     * Helper to extract bounds. Modify to match your GameObject/Player classes.
-     */
     private Rectangle boundsFrom(Object o) {
-        // WaterSpray uses its AOE range, not its small rectangle
+        // WaterSpray uses the AOE range effect as its bounds
         if (o instanceof Section3_Edgar.WaterSpray ws) {
             return ws.getSprayArea(); 
         }
 
-        // All other objects use GameObject standard bounds
+        // All objects uses the set GameObject standard bounds
         if (o instanceof GameObject go) {
             return go.getBounds();
         }

@@ -111,10 +111,10 @@ public class PauseMenuPanel extends javax.swing.JPanel {
             gamePanel.resumeGame();
         }
 
-        // Switch back to Game screen
+        // Switches to the gamepanel
         navigator.switchScreen("Game");
 
-        // Ensure GamePanel gets focus AFTER panel switch
+        // Makes sure that the gamepanel is in focus for userinputs to work properly
         SwingUtilities.invokeLater(() -> {
             gamePanel.requestFocusInWindow();
         });

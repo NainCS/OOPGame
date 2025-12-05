@@ -178,19 +178,6 @@ public class WaterSpray extends GameObject{
                 spraySize
             );
         }
-        
-//        //draw water tank
-//        g.setColor(Color.BLUE);
-//        g.fillRect(positionX, positionY, width, height);
-//        
-//        // water level
-//        g.setColor(Color.CYAN);
-//        int waterHeight = (int)(height * (waterAmount / 100.0));
-//        g.fillRect(positionX, positionY + (height - waterHeight), width, waterHeight);
-//        
-//        //tank border
-//        g.setColor(Color.BLACK);
-//        g.drawRect(positionX, positionY, width, height);
     }
     
 }
