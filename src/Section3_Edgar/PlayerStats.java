@@ -16,6 +16,12 @@ public class PlayerStats {
     int bestTime;
     int firesExtinguished;
     int completedLevels;
+
+    public PlayerStats(String username) {
+        this.username = username;
+    }
+    
+    
     
     public int getAverage(){
         return totalGames > 0 ? totalScore / totalGames : 0;
