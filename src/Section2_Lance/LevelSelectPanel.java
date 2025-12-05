@@ -9,7 +9,7 @@ import Section3_Edgar.NavController;
 
 /**
  *
- * @author Lance Wilde
+ * @author Lance
  */
 public class LevelSelectPanel extends javax.swing.JPanel {
 
@@ -39,9 +39,13 @@ public class LevelSelectPanel extends javax.swing.JPanel {
         level3BTN = new javax.swing.JButton();
         level2BTN = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(139, 174, 102));
+        setForeground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
 
+        level1BTN.setBackground(new java.awt.Color(0, 92, 59));
         level1BTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        level1BTN.setForeground(new java.awt.Color(255, 255, 255));
         level1BTN.setText("Level 1");
         level1BTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,9 +54,12 @@ public class LevelSelectPanel extends javax.swing.JPanel {
         });
 
         levelselectLBL.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        levelselectLBL.setForeground(new java.awt.Color(255, 255, 255));
         levelselectLBL.setText("Level Select");
 
+        backBTN.setBackground(new java.awt.Color(0, 92, 59));
         backBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        backBTN.setForeground(new java.awt.Color(255, 255, 255));
         backBTN.setText("BACK");
         backBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +67,9 @@ public class LevelSelectPanel extends javax.swing.JPanel {
             }
         });
 
+        level3BTN.setBackground(new java.awt.Color(0, 92, 59));
         level3BTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        level3BTN.setForeground(new java.awt.Color(255, 255, 255));
         level3BTN.setText("Level 3");
         level3BTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +77,9 @@ public class LevelSelectPanel extends javax.swing.JPanel {
             }
         });
 
+        level2BTN.setBackground(new java.awt.Color(0, 92, 59));
         level2BTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        level2BTN.setForeground(new java.awt.Color(255, 255, 255));
         level2BTN.setText("Level 2");
         level2BTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,16 +100,13 @@ public class LevelSelectPanel extends javax.swing.JPanel {
                         .addComponent(levelselectLBL))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(355, 355, 355)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(level1BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(level2BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(301, 301, 301)
-                                .addComponent(level3BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(324, 324, 324)))))
-                .addContainerGap(443, Short.MAX_VALUE))
+                        .addComponent(level1BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(level2BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(649, 649, 649)
+                        .addComponent(level3BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,9 +121,9 @@ public class LevelSelectPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(level1BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(level2BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(33, 33, 33)
                 .addComponent(level3BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addGap(82, 82, 82))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Lance Wilde
+ * @author Lance
  */
 public class PauseMenuPanel extends javax.swing.JPanel {
 
@@ -37,12 +37,16 @@ public class PauseMenuPanel extends javax.swing.JPanel {
 
         resumeBTN = new javax.swing.JButton();
         mainmenuBTN = new javax.swing.JButton();
-        settingsBTN = new javax.swing.JButton();
         gamepausedLBL = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(139, 174, 102));
+        setForeground(new java.awt.Color(255, 255, 255));
+        setToolTipText("");
         setPreferredSize(new java.awt.Dimension(1920, 1080));
 
+        resumeBTN.setBackground(new java.awt.Color(0, 92, 59));
         resumeBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        resumeBTN.setForeground(new java.awt.Color(255, 255, 255));
         resumeBTN.setText("RESUME");
         resumeBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,19 +54,13 @@ public class PauseMenuPanel extends javax.swing.JPanel {
             }
         });
 
+        mainmenuBTN.setBackground(new java.awt.Color(0, 92, 59));
         mainmenuBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        mainmenuBTN.setForeground(new java.awt.Color(255, 255, 255));
         mainmenuBTN.setText("MAIN MENU");
         mainmenuBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainmenuBTNActionPerformed(evt);
-            }
-        });
-
-        settingsBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        settingsBTN.setText("SETTINGS");
-        settingsBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                settingsBTNActionPerformed(evt);
             }
         });
 
@@ -79,7 +77,6 @@ public class PauseMenuPanel extends javax.swing.JPanel {
                         .addGap(836, 836, 836)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(resumeBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(settingsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mainmenuBTN)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(788, 788, 788)
@@ -91,13 +88,11 @@ public class PauseMenuPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(gamepausedLBL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
                 .addComponent(resumeBTN)
-                .addGap(121, 121, 121)
-                .addComponent(settingsBTN)
-                .addGap(120, 120, 120)
+                .addGap(141, 141, 141)
                 .addComponent(mainmenuBTN)
-                .addGap(336, 336, 336))
+                .addGap(412, 412, 412))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,13 +119,6 @@ public class PauseMenuPanel extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_resumeBTNActionPerformed
 
-    private void settingsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsBTNActionPerformed
-        // TODO add your handling code here:
-        if (navigator != null){
-            navigator.switchScreen("Settings");
-        }
-    }//GEN-LAST:event_settingsBTNActionPerformed
-
     private void mainmenuBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainmenuBTNActionPerformed
         // TODO add your handling code here:
         if (navigator != null){
@@ -143,6 +131,5 @@ public class PauseMenuPanel extends javax.swing.JPanel {
     private javax.swing.JLabel gamepausedLBL;
     private javax.swing.JButton mainmenuBTN;
     private javax.swing.JButton resumeBTN;
-    private javax.swing.JButton settingsBTN;
     // End of variables declaration//GEN-END:variables
 }

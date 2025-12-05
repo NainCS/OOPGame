@@ -9,7 +9,6 @@ import Section2_Lance.Level;
 import Section2_Lance.LevelManager;
 import Section2_Lance.LevelSelectPanel;
 import Section2_Lance.PauseMenuPanel;
-import Section2_Lance.SettingsPanel;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -35,7 +34,6 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     private ResultStatsPanel resultStatsPanel;
     private LevelSelectPanel levelSelectPanel;
     private PauseMenuPanel pauseMenuPanel;
-    private SettingsPanel settingsPanel;
     
     private int currentLevel = 1;
     private LevelManager levelManager;
@@ -77,16 +75,13 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         resultStatsPanel = new ResultStatsPanel(this);
         levelSelectPanel = new LevelSelectPanel(this);
         pauseMenuPanel = new PauseMenuPanel(this);
-        settingsPanel = new SettingsPanel(this);
         
        //add all screen to CardLayout
         mainPanel.add(mainMenuPanel, "MainMenu");
         mainPanel.add(gameStatsPanel, "GameStats");
         mainPanel.add(resultStatsPanel, "ResultStats");
-        mainPanel.add(gamePanel, "Game");
         mainPanel.add(levelSelectPanel, "LevelSelect");
         mainPanel.add(pauseMenuPanel, "PauseMenu");
-        mainPanel.add(settingsPanel, "Settings");
         
         
         setVisible(true);

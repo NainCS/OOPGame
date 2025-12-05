@@ -430,7 +430,9 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
 
         setPreferredSize(new java.awt.Dimension(1920, 1080));
 
+        pauseBTN.setBackground(new java.awt.Color(0, 92, 59));
         pauseBTN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pauseBTN.setForeground(new java.awt.Color(255, 255, 255));
         pauseBTN.setText("PAUSE");
         pauseBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,19 +441,24 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         });
 
         levelLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        levelLBL.setForeground(new java.awt.Color(255, 255, 255));
         levelLBL.setText("LEVEL:");
         levelLBL.setToolTipText("");
 
         livesLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        livesLBL.setForeground(new java.awt.Color(255, 255, 255));
         livesLBL.setText("LIVES:");
 
         waterLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        waterLBL.setForeground(new java.awt.Color(255, 255, 255));
         waterLBL.setText("WATER LEFT:");
 
         timerLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        timerLBL.setForeground(new java.awt.Color(255, 255, 255));
         timerLBL.setText("TIME LEFT:");
 
         scoreLBL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        scoreLBL.setForeground(new java.awt.Color(255, 255, 255));
         scoreLBL.setText("SCORE:");
         scoreLBL.setToolTipText("");
 

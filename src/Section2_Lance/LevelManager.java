@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Lance Wilde
+ * @author Lance
  */
 public class LevelManager implements GamePlayActions {
 

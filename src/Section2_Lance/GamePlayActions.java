@@ -6,7 +6,7 @@ package Section2_Lance;
 
 /**
  *
- * @author lwild_oeg6x3t
+ * @author Lance
  */
 public interface GamePlayActions {
     void startLevel(int levelNumber);
