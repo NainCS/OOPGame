@@ -250,7 +250,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void exitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBTNActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        System.exit(0); //exit the whole game page
         
     }//GEN-LAST:event_exitBTNActionPerformed
 
@@ -322,10 +322,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
             String playerName = nameTF.getText().trim();
             
             if(!playerName.isEmpty()) {
-            File playerFile = new File(playerName + "_stats.txt");
+            File playerFile = new File(playerName + "_stats.txt"); //create a file when player is registered
             if(playerFile.exists()) {
                 System.out.println("Loading stats for: " + playerName); 
-                mainFrame.showResultsStats(playerName);
+                mainFrame.showResultsStats(playerName); //shown specific player result in resultStats page
             } else {
                 displayTA.setText("Player '" + playerName + "' not found. Please ADD player first.");
                 System.out.println("File not found: " + playerFile.getAbsolutePath());
@@ -340,6 +340,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                                               
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         // TODO add your handling code here:
+        //create and add player
         String name = nameTF.getText().trim();
         if (!name.isEmpty()) {
             Player tempP = new Player(name);
@@ -355,10 +356,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
         if(register.isEmpty()){
              displayTA.setText("No players registered");
          }else{
-             String searchTerm = JOptionPane.showInputDialog(null, "Enter Name to be deleted");
+             String searchTerm = JOptionPane.showInputDialog(null, "Enter Name to be deleted"); //enter player name to search
              for(int i = 0; i < register.size(); i++){
                  Player tempP = register.get(i);
-                 if(tempP.getName().equalsIgnoreCase(searchTerm)){
+                 if(tempP.getName().equalsIgnoreCase(searchTerm)){ //get the name that entered by user and delete the player
                      register.remove(i);
                      displayTA.setText("Player " + searchTerm + " has been removed.");
                  }
@@ -380,7 +381,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private void gameStatsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameStatsBTNActionPerformed
         // TODO add your handling code here:
         if(mainFrame != null){
-        mainFrame.showScreen("GameStats");
+        mainFrame.showScreen("GameStats"); //switched to gameStats screen
     }
     }//GEN-LAST:event_gameStatsBTNActionPerformed
 
@@ -391,15 +392,16 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private void savePlayerToFile(Player player) {
     try {
         File file = new File(player.getName() + "_stats.txt");
-        PrintWriter writer = new PrintWriter(new FileWriter(file));
+        PrintWriter writer = new PrintWriter(new FileWriter(file)); //opens a "writer" that can write text into the file
         
+        //write default starting stats for the player
         writer.println("Level:1");
         writer.println("Score:0");
         writer.println("Lives:3");
         writer.println("Water:100");
         writer.println("Experience:0");
         
-        writer.close();
+        writer.close(); //saves and closes the file
     } catch (IOException e) {
         System.out.println("Error saving player: " + e.getMessage());
     }
