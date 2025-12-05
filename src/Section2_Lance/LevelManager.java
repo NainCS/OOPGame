@@ -7,7 +7,6 @@ import Section3_Edgar.Fire;
 import Section3_Edgar.Trees;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +23,9 @@ public class LevelManager implements GamePlayActions {
      * Loads a level from a TXT file and builds the Level object.
      */
     public Level loadLevelFile(String filename) {
-
+        
         Level level = new Level();
+        level.setLevelNumber(extractNumberFromFilename(filename));
         List<Object> objects = level.getObjects();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -88,6 +88,14 @@ public class LevelManager implements GamePlayActions {
     //  GamePlayActions interface methods
     // ============================================================
 
+    private int extractNumberFromFilename(String name) {
+        try {
+            return Integer.parseInt(name.replaceAll("\\D", ""));
+        } catch (Exception e) {
+            return 1;
+        }
+    }
+    
     @Override
     public void startLevel(int levelNumber) {
         // GamePanel handles actual gameplay. This method only exists

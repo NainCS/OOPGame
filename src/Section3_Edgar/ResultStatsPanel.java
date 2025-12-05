@@ -394,13 +394,12 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         historyOfGameTA.setText(historyText.toString());
     }
      
-     //can be called from section2 in the gamePanel, it updates the stats of the player in the game
      public void updatePlayerStats(String username, int level, int score, int lives, int water, int experience) {
         this.currentUser = username;
         levelLBL.setText("Level: " + level);
         currentScoreLBL.setText("Current Score: " + score);
         livesLBL.setText("Lives: " + lives);
-        waterLBL.setText("Water: " + water + "/100");
+        waterLBL.setText("Water: " + water + "/30");
         experienceBar.setValue(experience);
         experienceBar.setString("Experience: " + experience + "%");
     }

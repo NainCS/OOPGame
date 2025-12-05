@@ -12,6 +12,7 @@ import Section3_Edgar.WaterSpray;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
@@ -44,12 +45,14 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
     private int lives;
     private int water;
     private int timeRemaining;
+    private String currentUser;
 
     
 
-    public GamePanel(NavController navigator, Level level) {
+    public GamePanel(NavController navigator, Level level, String username) {
         this.navigator = navigator;
         this.level = level;
+        this.currentUser = username;
 
 
         fires = new ArrayList<>();
@@ -64,9 +67,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         addKeyListener(this);
     }
 
-    // ==============================
-    //  SETUP GAME OBJECTS
-    // ==============================
+    // Game setup
     private void setupGame() {
 
         // Player stays same
@@ -94,9 +95,35 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
         level.setTotalFires(fires.size());
     }
 
-    // ==============================
-    //  TIMERS
-    // ==============================
+    public int getLevelNumber() {
+        return level.getLevelNumber();
+    }
+    
+    private int calculateExperience() {
+        int xp = 0;
+
+        // Base score:
+        xp += score;
+
+        // Bonus for remaining lives:
+        xp += lives * 50;
+
+        // Bonus for time left (avoid negative just in case):
+        if (timeRemaining > 0) {
+            xp += timeRemaining * 2;
+        }
+
+        // Bonus for water left:
+        if (water > 0) {
+            xp += water;
+        }
+
+        // No negative XP:
+        return Math.max(0, xp);
+    }
+    
+    
+    // Timers
     private void setupTimers() {
 
         frameTimer = new Timer(16, this);
@@ -271,28 +298,70 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener, Key
     private void levelComplete() {
         frameTimer.stop();
         oneSecondTimer.stop();
-        
+
+        // calculate stats for ResultStatsPanel
+        int experience = calculateExperience();
+
+        // if Level has a total time, we can compute time used
+        int timeUsed;
+        try {
+            timeUsed = (int) level.getGameTimer() - timeRemaining;
+        } catch (Exception ex) {
+            // fallback if Level doesn't have getGameTimer
+            timeUsed = timeRemaining; // or 0, depending on how you want it
+        }
+        if (timeUsed < 0) timeUsed = 0;
+
         javax.swing.JOptionPane.showMessageDialog(
             this,
             "Congratulations! You extinguished all fires!\nLevel Complete!",
             "Level Complete",
             javax.swing.JOptionPane.INFORMATION_MESSAGE
         );
-        navigator.switchScreen("ResultStats");
+
+        // NEW: tell the navigation controller to show ResultStats with this data
+        navigator.showResultsStatsFromGame(
+            currentUser,
+            levelNumber,
+            score,
+            lives,
+            water,
+            experience,
+            timeUsed,
+            "Win"
+        );
     }
 
     private void levelFailed(String reason) {
         frameTimer.stop();
         oneSecondTimer.stop();
-        
+
+        int experience = calculateExperience();
+        int timeUsed;
+        try {
+            timeUsed = (int) level.getGameTimer() - timeRemaining;
+        } catch (Exception ex) {
+            timeUsed = timeRemaining;
+        }
+        if (timeUsed < 0) timeUsed = 0;
+
         javax.swing.JOptionPane.showMessageDialog(
             this,
             reason,
             "Level Failed",
             javax.swing.JOptionPane.ERROR_MESSAGE
         );
-        
-        navigator.switchScreen("MainMenu");
+
+        navigator.showResultsStatsFromGame(
+            currentUser,
+            levelNumber,
+            score,
+            lives,
+            water,
+            experience,
+            timeUsed,
+            "Lose"
+        );
     }
 
     // ---------------------------

@@ -16,6 +16,10 @@ import javax.swing.JPanel;
 import Section3_Edgar.GameStatsPanel;
 import Section3_Edgar.NavController;
 import Section3_Edgar.ResultStatsPanel;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,8 +36,11 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     private LevelSelectPanel levelSelectPanel;
     private PauseMenuPanel pauseMenuPanel;
     private SettingsPanel settingsPanel;
-    private LevelManager levelManager;
+    
     private int currentLevel = 1;
+    private LevelManager levelManager;
+    
+    private String currentUserName = "";
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
@@ -47,10 +54,12 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
+        
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
         setContentPane(mainPanel);
         
+        levelManager = new LevelManager();
         gameController = new GameController(this);
         mainMenuPanel = new MainMenuPanel(this);
         gameStatsPanel = new GameStatsPanel(this);
@@ -76,16 +85,16 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
 
         currentLevel = levelNumber;
 
-        LevelManager levelManager = new LevelManager();
         Level level = levelManager.loadLevelFile("src/Section2_Lance/Level" + levelNumber + ".txt");
 
         if (gamePanel != null)
             mainPanel.remove(gamePanel);
 
-        gamePanel = new GamePanel(this, level);
+        gamePanel = new GamePanel(this, level, currentUserName);
 
         mainPanel.add(gamePanel, "Game");
         gamePanel.startGame();
+
         switchScreen("Game");
         gamePanel.requestFocusInWindow();
     }
@@ -93,22 +102,19 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     public void startNextLevel() {
         int next = currentLevel + 1;
 
-        // You only have 3 levels
-        if (next > 3) {
-            javax.swing.JOptionPane.showMessageDialog(
-                    this,
-                    "No more levels!\nReturning to Main Menu.",
-                    "Game Complete",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE
-            );
+        if (next > 3) { // assuming you have 3 levels
+            JOptionPane.showMessageDialog(null, "All levels complete!");
             switchScreen("MainMenu");
             return;
         }
 
         startLevel(next);
     }
-
     
+    public void levelFinished(int levelNumber) {
+        this.currentLevel = levelNumber;  
+    }
+
     @Override
     public void switchScreen(String screenName) {
         cardLayout.show(mainPanel, screenName);
@@ -116,6 +122,12 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     
     public void showScreen(String name){
         cardLayout.show(mainPanel, name);
+    }
+    
+    public void showResultsStats(String playerName) {
+        this.currentUserName = playerName;
+        resultStatsPanel.loadPlayerStats(playerName);
+        showScreen("ResultStats");
     }
     
     public GameController getGameController(){
@@ -126,14 +138,65 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         return gamePanel;
     }
     
-    public void showResultsStats(String playerName) {
-    System.out.println("MainFrame: Showing stats for " + playerName);
-   
-    if (resultStatsPanel != null) {
-        resultStatsPanel.loadPlayerStats(playerName);
+    public ResultStatsPanel getResultStatsPanel() {
+        return resultStatsPanel;
     }
-    showScreen("ResultStats");
-}
+    
+   
+    
+    @Override
+    public void showResultsStatsFromGame(
+            String username,
+            int level,
+            int score,
+            int lives,
+            int water,
+            int experience,
+            int time,
+            String result) {
+        
+        this.currentUserName = username;
+
+        // Update Edgar's ResultStatsPanel
+        resultStatsPanel.updatePlayerStats(
+                username,
+                level,
+                score,
+                lives,
+                water,
+                experience
+        );
+        
+        showScreen("ResultStats");
+    }
+    
+    private int calculateExperience(int score,
+                                    int lives,
+                                    int water,
+                                    int timeRemaining,
+                                    int level) {
+
+        int exp = 0;
+        exp += score / 10;
+        exp += lives * 5;
+        exp += timeRemaining / 2;
+        if (water > 50) exp += 10;
+        exp += (level - 1) * 10;
+
+        // clamp 0–100
+        if (exp < 0) exp = 0;
+        if (exp > 100) exp = 100;
+
+        return exp;
+    }
+    
+    private void appendGameResult(String username, int score, int time, String result){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(username + "_games.txt", true))) {
+            writer.println(score + ","+time+","+result);
+        }catch(IOException e){
+            System.out.println("Error saving game result: "+e.getMessage());
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
