@@ -46,7 +46,6 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="301" max="-2" attributes="0"/>
                               <Component id="level3BTN" min="-2" pref="576" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

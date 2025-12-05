@@ -6,7 +6,9 @@ package Section1_Sam; //Sook Ying Sam
 
 
 import Section3_Edgar.GameObject;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 /**
  *
  * @author Sam SY
@@ -16,6 +18,7 @@ public class Player extends GameObject implements Controllable, Scorable, Displa
     private int waterSpray;
     private int lives;
     private int score;
+    public int speed = 5;
 
     public Player(String name) {
         this.name = name;
@@ -30,11 +33,18 @@ public class Player extends GameObject implements Controllable, Scorable, Displa
     }
     
     
-    public Player(){
+    public Player() {
         waterSpray = 10;
         lives = 3;
         score = 0;
-    }
+
+        this.width = 50;
+        this.height = 50;
+        this.positionX = 200;
+        this.positionY = 300;
+
+        this.edges = new Rectangle(positionX, positionY, width, height);
+}
     
     public boolean sprayWater(){
         if (waterSpray > 0){
@@ -49,26 +59,35 @@ public class Player extends GameObject implements Controllable, Scorable, Displa
     public void gainLife(){lives++;}
     
     
+    
     @Override
     public void draw(Graphics g){
+        g.setColor(Color.BLUE);
+        g.fillRect(positionX, positionY, width, height);
     }
     @Override
     public void update(){
+        edges.setLocation(positionX, positionY);
     }
     @Override
-    public void moveUp(){
+    public void moveUp() {
+        positionY -= speed;
     }
     @Override
-    public void moveDown(){
+    public void moveDown() {
+        positionY += speed;
     }
     @Override
-    public void moveRight(){
+    public void moveLeft() {
+        positionX -= speed;
     }
     @Override
-    public void moveLeft(){
+    public void moveRight() {
+        positionX += speed;
     }
     @Override
     public void action(){
+        sprayWater();
     }
     @Override
     public int getScore(){

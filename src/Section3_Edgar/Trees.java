@@ -24,6 +24,14 @@ public class Trees extends GameObject{
         this.durability = 100;
         this.onFire = false;
     }
+    
+    public Trees(int x, int y) {
+    super(x, y, 80, 120);
+    this.typeOfTree = "Oak";
+    this.flammable = true;
+    this.durability = 100;
+    this.onFire = false;
+    }   
 
     public Trees(String typeOfTree, boolean flammable, int durability, boolean onFire, int positionX, int positionY, int witdh, int height) {
         super(positionX, positionY, witdh, height);

@@ -4,7 +4,9 @@
  */
 package Section2_Lance;
 
+import Section1_Sam.MainFrame;
 import Section3_Edgar.NavController;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -101,9 +103,25 @@ public class PauseMenuPanel extends javax.swing.JPanel {
 
     private void resumeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumeBTNActionPerformed
         // TODO add your handling code here:
-        if (navigator != null){
-            navigator.switchScreen("Game");
+        try {
+            MainFrame frame = (MainFrame) navigator;
+            GamePanel gamePanel = frame.getGamePanel();
+
+        if (gamePanel != null) {
+            gamePanel.resumeGame();
         }
+
+        // Switch back to Game screen
+        navigator.switchScreen("Game");
+
+        // Ensure GamePanel gets focus AFTER panel switch
+        SwingUtilities.invokeLater(() -> {
+            gamePanel.requestFocusInWindow();
+        });
+
+    } catch (Exception e) {
+        System.out.println("Resume error: " + e.getMessage());
+    }
     }//GEN-LAST:event_resumeBTNActionPerformed
 
     private void settingsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsBTNActionPerformed

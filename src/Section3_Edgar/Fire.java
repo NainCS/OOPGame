@@ -19,6 +19,12 @@ public class Fire extends GameObject{
         this.intensity = 1;
         this.extinguished = false;
     }
+    
+    public Fire(int x, int y) {
+        super(x, y, 50, 50);
+        this.intensity = 1;
+        this.extinguished = false;
+    }
 
     public Fire(int intensity, int positionX, int positionY, int witdh, int height, boolean extinguished) {
         super(positionX, positionY, witdh, height);

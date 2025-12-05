@@ -4,6 +4,7 @@
  */
 package Section3_Edgar;
 
+import Section1_Sam.MainFrame;
 import java.io.*;
 import java.util.*;
 
@@ -13,7 +14,6 @@ import java.util.*;
  */
 public class ResultStatsPanel extends javax.swing.JPanel {
     
-    //defining first an instance of the navController interface and the currentUser
     private NavController navigator;
     private String currentUser;
 
@@ -50,6 +50,7 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         refreshStatsBTN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         historyOfGameTA = new javax.swing.JTextArea();
+        nextlevelBTN = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,6 +137,16 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         historyOfGameTA.setRows(5);
         jScrollPane1.setViewportView(historyOfGameTA);
 
+        nextlevelBTN.setBackground(new java.awt.Color(0, 92, 59));
+        nextlevelBTN.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        nextlevelBTN.setForeground(new java.awt.Color(255, 255, 255));
+        nextlevelBTN.setText("Next Level");
+        nextlevelBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextlevelBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,14 +178,16 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                         .addGap(601, 601, 601)
                         .addComponent(experienceBar, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(519, 519, 519)
+                        .addGap(156, 156, 156)
+                        .addComponent(nextlevelBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(refreshStatsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(saveBTN))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addContainerGap(679, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,16 +221,17 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                         .addComponent(waterLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bestTimeLBL)
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addGap(0, 113, Short.MAX_VALUE)))
                 .addGap(50, 50, 50)
                 .addComponent(experienceBar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refreshStatsBTN)
-                    .addComponent(saveBTN))
-                .addGap(72, 72, 72))
+                    .addComponent(saveBTN)
+                    .addComponent(nextlevelBTN))
+                .addGap(96, 96, 96))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -228,26 +242,29 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_backBTNActionPerformed
 
-    //here we called savePlayerstats
     private void saveBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBTNActionPerformed
         // TODO add your handling code here:
         savePlayerStats(currentUser);
     }//GEN-LAST:event_saveBTNActionPerformed
-    
-    //here we are gonna reload everything from the files, for a specific user
+
     private void refreshStatsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshStatsBTNActionPerformed
         // TODO add your handling code here:
         loadPlayerStats(currentUser);
     }//GEN-LAST:event_refreshStatsBTNActionPerformed
 
+    private void nextlevelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextlevelBTNActionPerformed
+        // TODO add your handling code here:
+        if (navigator instanceof MainFrame frame) {
+        frame.startNextLevel();
+        }
+    }//GEN-LAST:event_nextlevelBTNActionPerformed
+
     // Each string of the list is gonna be a game played - tracking of the games (win - lost)
-    //Useful for calculating totalstats, bestscore, and so on in the load method
-    //This same method can be used in GameStatsPanel, duplicating it so its avoid the creation of more classes
-    private ArrayList<String> readAllGames(String username){
-        ArrayList<String> games = new ArrayList<>();
+    private List<String> readUserGames(String username){
+        List<String> games = new ArrayList<>();
         try{
             File game = new File(username + "_games.txt");
-            //this needs to be appended by section 2 - Game logic so we can keep track of the wins
+            //this needs to be appended by section 2 - Game logic
             if(!game.exists()){
                 return games;
             }
@@ -262,7 +279,7 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         } catch (IOException e){
             System.out.println("Error reading games: " + e.getMessage());
         }
-        return games;   //getting all the games played by the user
+        return games;
     }
     
     //overwrites the file that section 1 creates, to keep track of the user
@@ -285,11 +302,10 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         }
     }
     
-     //This method is in charge of displaying the information and can be called from other panels
-     //also calculates values such as totalscore, bestscore values
+     //This method is in charge of displaying the information
      public void loadPlayerStats(String username) {
         this.currentUser = username;
-        titleLBL.setText("Player Statistics - " + username);
+        titleLBL.setText("Result - Player Statistics - " + username);
         
         try {
             File statsFile = new File(username + "_stats.txt");
@@ -298,26 +314,26 @@ public class ResultStatsPanel extends javax.swing.JPanel {
                 String line;
                 
                 while ((line = reader.readLine()) != null) {
-                    String[] statsTextParts = line.split(":");
-                    if (statsTextParts.length == 2) {
-                        switch (statsTextParts[0]) {
+                    String[] textParts = line.split(":");
+                    if (textParts.length == 2) {
+                        switch (textParts[0]) {
                             case "Username":
                                 break;
                             case "Level":
-                                levelLBL.setText("Level: " + statsTextParts[1]);
+                                levelLBL.setText("Level: " + textParts[1]);
                                 break;
                             case "Score":
-                                currentScoreLBL.setText("Current Score: " + statsTextParts[1]);
+                                currentScoreLBL.setText("Current Score: " + textParts[1]);
                                 break;
                             case "Lives":
-                                livesLBL.setText("Lives: " + statsTextParts[1]);
+                                livesLBL.setText("Lives: " + textParts[1]);
                                 break;
                             case "Water":
-                                waterLBL.setText("Water: " + statsTextParts[1]);
+                                waterLBL.setText("Water: " + textParts[1]);
                                 break;
                             case "Experience":
-                                experienceBar.setValue(Integer.parseInt(statsTextParts[1]));
-                                experienceBar.setString("Experience: " + statsTextParts[1] + "%");
+                                experienceBar.setValue(Integer.parseInt(textParts[1]));
+                                experienceBar.setString("Experience: " + textParts[1] + "%");
                                 break;
                         }
                     }
@@ -328,10 +344,10 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             System.out.println("Error loading player stats: " + e.getMessage());
         }
         
-        //restore the last gamesStats for a player (win-lose) in case hasnt played yet
-        List<String> allGames = readAllGames(this.currentUser);
+    
+        List<String> games = readUserGames(this.currentUser);
         
-        if (allGames.isEmpty()) {
+        if (games.isEmpty()) {
             historyOfGameTA.setText("No games played yet for: " + username);
             totalGamesLBL.setText("Total Games Played: 0");
             bestScoreLBL.setText("Best Score: 0");
@@ -340,18 +356,18 @@ public class ResultStatsPanel extends javax.swing.JPanel {
             return;
         }
         
-        int totalGames = allGames.size();
+        int totalGames = games.size();
         int bestScore = 0;
         int totalScore = 0;
         int bestTime = Integer.MAX_VALUE;
         StringBuilder historyText = new StringBuilder();
         
-        for (String game : allGames) {
-            String[] statsOfGame = game.split(",");
-            if (statsOfGame.length >= 3) {
-                int score = Integer.parseInt(statsOfGame[0]);
-                int time = Integer.parseInt(statsOfGame[1]);
-                String result = statsOfGame[2];
+        for (String game : games) {
+            String[] parts = game.split(",");
+            if (parts.length >= 3) {
+                int score = Integer.parseInt(parts[0]);
+                int time = Integer.parseInt(parts[1]);
+                String result = parts[2];
                 
                 historyText.append("Score: ").append(score)
                           .append(" | Time: ").append(time).append("s")
@@ -372,7 +388,6 @@ public class ResultStatsPanel extends javax.swing.JPanel {
         historyOfGameTA.setText(historyText.toString());
     }
      
-     //can be called from section2 in the gamePanel, it updates the stats of the player in the game
      public void updatePlayerStats(String username, int level, int score, int lives, int water, int experience) {
         this.currentUser = username;
         levelLBL.setText("Level: " + level);
@@ -395,6 +410,7 @@ public class ResultStatsPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel levelLBL;
     private javax.swing.JLabel livesLBL;
+    private javax.swing.JButton nextlevelBTN;
     private javax.swing.JButton refreshStatsBTN;
     private javax.swing.JButton saveBTN;
     private javax.swing.JLabel titleLBL;

@@ -4,10 +4,7 @@
  */
 package Section1_Sam; //Sook Ying Sam
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -176,65 +173,61 @@ public class MainMenuPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(472, 472, 472)
-                                .addComponent(levelBTN)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                .addComponent(resultBTN)
-                                .addGap(27, 27, 27)
-                                .addComponent(gameStatsBTN))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(deleteBTN))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(502, 502, 502)
-                                        .addComponent(nameLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(67, 67, 67)
-                                        .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(displayBTN)))
-                                .addGap(20, 20, 20)))
-                        .addGap(103, 103, 103))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(579, 579, 579)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(playBTN)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(exitBTN))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(164, 164, 164)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(472, 472, 472)
+                                .addComponent(levelBTN)
+                                .addGap(51, 51, 51)
+                                .addComponent(resultBTN)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gameStatsBTN))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(527, 527, 527)
+                                .addComponent(nameLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(100, 100, 100)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(titleLBL)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(displayBTN))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(deleteBTN)))
+                        .addGap(103, 103, 103)))
                 .addComponent(jLabel1)
                 .addGap(556, 556, 556))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(622, 622, 622)
-                .addComponent(titleLBL)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(63, 63, 63)
                         .addComponent(titleLBL)
-                        .addGap(51, 51, 51))
+                        .addGap(82, 82, 82)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameLBL)
+                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(addBTN)
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(displayBTN)
-                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nameLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)))
+                        .addGap(39, 39, 39)
+                        .addComponent(displayBTN)))
+                .addGap(34, 34, 34)
+                .addComponent(deleteBTN)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(deleteBTN)
-                        .addGap(56, 56, 56)
+                        .addGap(54, 54, 54)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -246,7 +239,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                             .addComponent(resultBTN)
                             .addComponent(gameStatsBTN)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
+                        .addGap(78, 78, 78)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(345, Short.MAX_VALUE))
         );
@@ -254,21 +247,21 @@ public class MainMenuPanel extends javax.swing.JPanel {
 
     private void exitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBTNActionPerformed
         // TODO add your handling code here:
-        System.exit(0); //exit the hold game page
+        System.exit(0);
         
     }//GEN-LAST:event_exitBTNActionPerformed
 
     private void playBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBTNActionPerformed
         // TODO add your handling code here:
         if(mainFrame != null){
-            mainFrame.showScreen("Game"); //when clicked, switched to the game screen
+            mainFrame.startLevel(1);
         }
     }//GEN-LAST:event_playBTNActionPerformed
 
     private void levelBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelBTNActionPerformed
         // TODO add your handling code here:
         if(mainFrame != null){
-            mainFrame.showScreen("LevelSelect"); //switched to the level select page
+            mainFrame.showScreen("LevelSelect");
         }
     }//GEN-LAST:event_levelBTNActionPerformed
 
@@ -278,10 +271,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
             String playerName = nameTF.getText().trim();
             
             if(!playerName.isEmpty()) {
-            File playerFile = new File(playerName + "_stats.txt"); //create a file when player is registered
+            File playerFile = new File(playerName + "_stats.txt");
             if(playerFile.exists()) {
                 System.out.println("Loading stats for: " + playerName); 
-                mainFrame.showResultStats(playerName); //shown specific player result in resultStats page
+                mainFrame.showResultsStats(playerName);
             } else {
                 displayTA.setText("Player '" + playerName + "' not found. Please ADD player first.");
                 System.out.println("File not found: " + playerFile.getAbsolutePath()); // Debug
@@ -296,13 +289,11 @@ public class MainMenuPanel extends javax.swing.JPanel {
                                               
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         // TODO add your handling code here:
-        //create and add player
         String name = nameTF.getText().trim();
         if (!name.isEmpty()) {
             Player tempP = new Player(name);
             register.add(tempP);
             savePlayerToFile(tempP);  
-            saveUsersforGameStats(tempP.getName());
             displayTA.setText("New Player Registered: " + name);
         }        
     }//GEN-LAST:event_addBTNActionPerformed
@@ -312,10 +303,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
         if(register.isEmpty()){
              displayTA.setText("No players registered");
          }else{
-             String searchTerm = JOptionPane.showInputDialog(null, "Enter Name to be deleted"); //enter player name to search
+             String searchTerm = JOptionPane.showInputDialog(null, "Enter Name to be deleted");
              for(int i = 0; i < register.size(); i++){
                  Player tempP = register.get(i);
-                 if(tempP.getName().equalsIgnoreCase(searchTerm)){ //get the name that entered by user and delete the player
+                 if(tempP.getName().equalsIgnoreCase(searchTerm)){
                      register.remove(i);
                      displayTA.setText("Player " + searchTerm + " has been removed.");
                  }
@@ -337,56 +328,30 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private void gameStatsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameStatsBTNActionPerformed
         // TODO add your handling code here:
         if(mainFrame != null){
-        mainFrame.showScreen("GameStats"); //switched to gameStats screen
+        mainFrame.showScreen("GameStats");
     }
     }//GEN-LAST:event_gameStatsBTNActionPerformed
 
     private void nameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTFActionPerformed
       // TODO add your handling code here:
     }//GEN-LAST:event_nameTFActionPerformed
-    //save the player's stats into a text file
-    private void savePlayerToFile(Player player) {
-        try {
-            File file = new File(player.getName() + "_stats.txt");
-            PrintWriter writer = new PrintWriter(new FileWriter(file)); //opens a "writer" that can write text into the file
-        
-            //write default starting stats for the player
-            writer.println("Level:1");
-            writer.println("Score:0");
-            writer.println("Lives:3");
-            writer.println("Water:100");
-            writer.println("Experience:0");
-        
-            writer.close(); //saves and closes the file
-        } catch (IOException e) {
-            System.out.println("Error saving player: " + e.getMessage());
-        }
-    }
-    
-    //This method is gonna create a users txt and be called at the moment of adding a player, to be used in gamestatspanel
-    private void saveUsersforGameStats(String username) {
-        File file = new File("users.txt");
-        try {
-            if (file.exists()) {
-                try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        if (line.trim().equalsIgnoreCase(username.trim())) {
-                            return;
-                        }
-                    }
-                }
-            }
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
-                writer.write(username);
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Error updating users.txt: " + e.getMessage());
-            displayTA.setText("Error updating users.txt");
-        }
-    }
 
+    private void savePlayerToFile(Player player) {
+    try {
+        File file = new File(player.getName() + "_stats.txt");
+        PrintWriter writer = new PrintWriter(new FileWriter(file));
+        
+        writer.println("Level:1");
+        writer.println("Score:0");
+        writer.println("Lives:3");
+        writer.println("Water:100");
+        writer.println("Experience:0");
+        
+        writer.close();
+    } catch (IOException e) {
+        System.out.println("Error saving player: " + e.getMessage());
+    }
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

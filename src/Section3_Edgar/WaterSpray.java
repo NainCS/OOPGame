@@ -24,6 +24,15 @@ public class WaterSpray extends GameObject{
         this.active = false;
         this.waterAmount = 100;
     }
+    
+    public WaterSpray(int x, int y) {
+        super(x, y, 20, 20);
+        this.range = 80;
+        this.duration = 30;
+        this.strength = 1;
+        this.active = true;
+        this.waterAmount = 100;
+    }
 
     public WaterSpray(int range, int duration, int strength, int waterAmount, int positionX, int positionY, int witdh, int height) {
         super(positionX, positionY, witdh, height);
@@ -122,7 +131,7 @@ public class WaterSpray extends GameObject{
         this.active = active;
         this.setIsActive(active);
         if (active){
-            this.duration = duration;
+            this.duration = 20;
         }else{
             this.duration = 0;
         }
@@ -132,14 +141,25 @@ public class WaterSpray extends GameObject{
         this.waterAmount = waterAmount;
     }
     
+    public Rectangle getSprayArea() {
+        // Area of effect for water spraying
+        return new Rectangle(
+            positionX - range / 2,
+            positionY - range / 2,
+            width + range,
+            height + range
+        );
+    }
+    
     @Override
      public void update() {
+        this.edges.setLocation(positionX, positionY);
+
         if (active && isActive) {
             duration--;
             if (duration <= 0) {
                 stopSpraying();
             }
-            this.edges.setLocation(positionX, positionY);
         }
     }
      
@@ -159,18 +179,18 @@ public class WaterSpray extends GameObject{
             );
         }
         
-        //draw water tank
-        g.setColor(Color.BLUE);
-        g.fillRect(positionX, positionY, width, height);
-        
-        // water level
-        g.setColor(Color.CYAN);
-        int waterHeight = (int)(height * (waterAmount / 100.0));
-        g.fillRect(positionX, positionY + (height - waterHeight), width, waterHeight);
-        
-        //tank border
-        g.setColor(Color.BLACK);
-        g.drawRect(positionX, positionY, width, height);
+//        //draw water tank
+//        g.setColor(Color.BLUE);
+//        g.fillRect(positionX, positionY, width, height);
+//        
+//        // water level
+//        g.setColor(Color.CYAN);
+//        int waterHeight = (int)(height * (waterAmount / 100.0));
+//        g.fillRect(positionX, positionY + (height - waterHeight), width, waterHeight);
+//        
+//        //tank border
+//        g.setColor(Color.BLACK);
+//        g.drawRect(positionX, positionY, width, height);
     }
     
 }

@@ -4,6 +4,7 @@
  */
 package Section2_Lance;
 
+import Section1_Sam.MainFrame;
 import Section3_Edgar.NavController;
 
 /**
@@ -127,23 +128,20 @@ public class LevelSelectPanel extends javax.swing.JPanel {
 
     private void level1BTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level1BTNActionPerformed
         // TODO add your handling code here:
-        if (navigator != null){
-            navigator.switchScreen("Game");
-        }
+        MainFrame frame = (MainFrame) navigator;
+        frame.startLevel(1);
     }//GEN-LAST:event_level1BTNActionPerformed
 
     private void level2BTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2BTNActionPerformed
         // TODO add your handling code here:
-        if (navigator != null){
-            navigator.switchScreen("Game");
-        }
+        MainFrame frame = (MainFrame) navigator;
+        frame.startLevel(2);
     }//GEN-LAST:event_level2BTNActionPerformed
 
     private void level3BTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level3BTNActionPerformed
         // TODO add your handling code here:
-        if (navigator != null){
-            navigator.switchScreen("Game");
-        }
+        MainFrame frame = (MainFrame) navigator;
+        frame.startLevel(3);
     }//GEN-LAST:event_level3BTNActionPerformed
 
 

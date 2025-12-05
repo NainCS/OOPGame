@@ -21,18 +21,26 @@ public abstract class GameObject implements CollisionActions{
     protected Rectangle edges;
 
     public GameObject() {
+    this.positionX = 0;
+    this.positionY = 0;
+    this.width = 50;
+    this.height = 50;
+    this.edges = new Rectangle(positionX, positionY, width, height);
     }
 
-    public GameObject(int positionX, int positionY, int witdh, int height) {
+    public GameObject(int positionX, int positionY, int width, int height) {
         this.positionX = positionX;
         this.positionY = positionY;
-        this.width = width;
+        this.width = width;      // FIXED: width now matches parameter
         this.height = height;
         this.edges = new Rectangle(positionX, positionY, width, height);
     }
     
     @Override
     public Rectangle getEdges(){
+        return edges;
+    }  
+    public Rectangle getBounds(){
         return edges;
     }
     
