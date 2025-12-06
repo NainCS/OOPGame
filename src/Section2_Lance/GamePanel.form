@@ -21,43 +21,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pauseBTN" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
-              <Component id="livesLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-              <Component id="waterLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-              <Component id="timerLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-              <Component id="scoreLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="233" max="32767" attributes="0"/>
-              <Component id="levelLBL" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+              <EmptySpace pref="127" max="32767" attributes="0"/>
+              <Component id="levelLBL" min="-2" pref="204" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+              <Component id="livesLBL" min="-2" pref="201" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+              <Component id="waterLBL" min="-2" pref="333" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="timerLBL" min="-2" pref="340" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="scoreLBL" min="-2" pref="308" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pauseBTN" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="timerLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="waterLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="livesLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="scoreLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="levelLBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pauseBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="livesLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="waterLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="timerLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="scoreLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="levelLBL" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="995" max="32767" attributes="0"/>
+              <EmptySpace pref="1019" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

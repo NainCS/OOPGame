@@ -90,23 +90,25 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     
     // This method gets called when a level is chosen by the user
     public void startLevel(int levelNumber) {
-
         currentLevel = levelNumber;
-
+        // Loads the level.txt files
         Level level = levelManager.loadLevelFile("src/Section2_Lance/Level" + levelNumber + ".txt");
-
+        
+        // Creates a new gamepanel if one already exists
         if (gamePanel != null)
             mainPanel.remove(gamePanel);
-
             gamePanel = new GamePanel(this, level, currentUserName);
-
             mainPanel.add(gamePanel, "Game");
             gamePanel.startGame();
-
+            
+            // Switches to the game panel while also making sure
+            // that it is focused for keyboard user inputs
             switchScreen("Game");
             gamePanel.requestFocusInWindow();
-            
-        if (levelNumber == 1) {
+        
+        // When starting from level one onwards, it will keep track
+        // of the current session stats to display later
+        if (levelNumber == 1){
             sessionScore = 0;
             sessionTime = 0;
             sessionFires = 0;
@@ -115,25 +117,29 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
 
     }
     
+    // Updates stats for the session
     @Override
     public void updateSessionStats(int score, int time, int fires) {
         sessionScore += score;
         sessionTime += time;
         sessionFires += fires;
+        sessionWaterUsed = gamePanel.getWaterUsed();
     }
 
-
+    // Called when a level is completed from the NavController
+    // This will increase the stat of how many levels have been
+    // completed by the user
     @Override
     public void levelCompleted(int lvl) {
         sessionLevelsCompleted++;
     }
 
-    
+    // Method to start the next level after completion
     @Override
     public void startNextLevel() {
         int next = currentLevel + 1;
 
-        if (next > 3) {
+        if (next > 3){
 
             // Save the lifetime stats for GameStatsPanel and PlayerStats
             saveLifetimeStats(currentUserName);
@@ -147,11 +153,12 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
                 sessionWaterUsed
             );
 
+            // User prompt upon game completion of all 3 levels
             JOptionPane.showMessageDialog(
                 null,
-                "Congratulations! You beat all levels!\n" +
+                "Congratulations! You have beat all levels!\n" +
                 "Your progress has been saved.\n" +
-                "Return to the Main Menu to view your stats.",
+                "Return to the Main Menu to view your stats through Result Stats.",
                 "Game Complete",
                 JOptionPane.INFORMATION_MESSAGE
             );
@@ -163,8 +170,10 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
         startLevel(next);
     }
     
+    // This method is called to save lifetime stats data
+    // This data will be used by the player leaderboard
     private void saveLifetimeStats(String username) {
-        try {
+        try{
             FileWriter fw = new FileWriter(username + "_stats.txt");
             PrintWriter out = new PrintWriter(fw);
 
@@ -175,12 +184,12 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
 
             out.close();
 
-        } catch (IOException e) {
+        }catch (IOException e){
             System.out.println("Error writing player stats: " + e.getMessage());
         }
 
         // Appending to the user's game history logs
-        try {
+        try{
             FileWriter fw = new FileWriter(username + "_games.txt", true);
             PrintWriter out = new PrintWriter(fw);
 
@@ -188,7 +197,7 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
 
             out.close();
 
-        } catch (IOException e) {
+        }catch (IOException e){
             System.out.println("Error writing game history: " + e.getMessage());
         }
     }
@@ -222,7 +231,6 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
     
     @Override
     public void showResultsStatsFromGame(String username, int score, int time, boolean won) {
-
         // Save game result to the user history
         resultStatsPanel.recordGameResult(username, score, time, won);
 
@@ -232,14 +240,13 @@ public class MainFrame extends javax.swing.JFrame implements NavController{
 
     
     private void saveFinalSessionToFile(String user, int totalScore, int totalLives, int totalWater){
-        try (PrintWriter writer = new PrintWriter(new FileWriter(user + "_session.txt", true))) {
-
+        try(PrintWriter writer = new PrintWriter(new FileWriter(user + "_session.txt", true))){
             writer.println("FinalSessionScore=" + totalScore);
             writer.println("FinalSessionLives=" + totalLives);
             writer.println("FinalSessionWater=" + totalWater);
             writer.println("----");
 
-        } catch (IOException e) {
+        }catch (IOException e){
             System.out.println("Error saving session stats: " + e.getMessage());
         }
     }

@@ -12,7 +12,6 @@ public interface GamePlayActions {
     void startLevel(int levelNumber);
     void pauseGame();
     void resumeGame();
-    void restartLevel();
     boolean isLevelComplete();
     
 }

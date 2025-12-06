@@ -13,47 +13,52 @@ import java.util.List;
  *
  * @author Lance
  */
+
+// Code credit to KaarinGaming for the developement of this class
+// Video: https://www.youtube.com/watch?v=et5JeT-ESKk
+
 public class LevelManager implements GamePlayActions {
 
     private Level currentLevel;
 
     public LevelManager() {}
 
-    /**
-     * Loads a level from a TXT file and builds the Level object.
-     */
-    public Level loadLevelFile(String filename) {
+    // Loads the level from a text file, which values are edited for
+    // the level layout and is parsed to be compatible 
+    public Level loadLevelFile(String filename){
         
         Level level = new Level();
         level.setLevelNumber(extractNumberFromFilename(filename));
         List<Object> objects = level.getObjects();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-
+        // File gets closed after it is read
+        try(BufferedReader reader = new BufferedReader(new FileReader(filename))){
             String line;
 
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null){
 
+                // Parsing Section
+                // removes leading/trailing whitespace and empty lines
                 line = line.trim();
+                // Skips comments for better reading
                 if (line.isEmpty() || line.startsWith("//")) continue;
 
-                // LEVEL SETTINGS
+                // Level settings syntax          
                 
-                if (line.startsWith("TIME=")) {
+                if (line.startsWith("TIME=")){
                     level.setGameTimer(Integer.parseInt(line.substring(5)));
                     continue;
                 }
-                if (line.startsWith("WATER=")) {
+                if (line.startsWith("WATER=")){
                     level.setWater(Integer.parseInt(line.substring(6)));
                     continue;
                 }
-                if (line.startsWith("LIVES=")) {
+                if (line.startsWith("LIVES=")){
                     level.setLives(Integer.parseInt(line.substring(6)));
                     continue;
                 }
 
                 // Fires
-
                 if (line.startsWith("FIRE")) {
                     String[] p = line.split(" ");
                     int x = Integer.parseInt(p[1]);
@@ -62,9 +67,7 @@ public class LevelManager implements GamePlayActions {
                     continue;
                 }
 
-
                 // Trees
-                
                 if (line.startsWith("TREE")) {
                     String[] p = line.split(" ");
                     int x = Integer.parseInt(p[1]);
@@ -74,20 +77,24 @@ public class LevelManager implements GamePlayActions {
                 }
             }
 
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
-
         currentLevel = level;
         return level;
     }
 
     //  GamePlayActions interface methods
 
-    private int extractNumberFromFilename(String name) {
-        try {
-            return Integer.parseInt(name.replaceAll("\\D", ""));
+    // Gets the current level number from the text file name
+    private int extractNumberFromFilename(String name){
+        try{
+            String filenameOnly = new java.io.File(name).getName();
+            // "\\D" gets rid of all non digits in the file name
+            String digits = filenameOnly.replaceAll("\\D", "");   
+            return Integer.parseInt(digits);
         } catch (Exception e) {
+            System.out.println("Parse failed");
             return 1;
         }
     }
@@ -102,15 +109,6 @@ public class LevelManager implements GamePlayActions {
 
     @Override
     public void resumeGame() {
-    }
-
-    @Override
-    public void restartLevel() {
-        if (currentLevel != null) {
-            currentLevel.setExtinguishedFires(0);
-            currentLevel.setFailed(false);
-            currentLevel.setCompleted(false);
-        }
     }
 
     @Override

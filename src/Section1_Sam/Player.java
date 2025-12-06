@@ -9,16 +9,28 @@ import Section3_Edgar.GameObject;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 /**
  *
  * @author Sam SY
  */
+
+// Code credit to RyiSnow for loading sprite game objects
+// Video: https://www.youtube.com/watch?v=wT9uNGzMEM4
+
+// Free use firefighter sprite source: 
+// https://laredgames.itch.io/char-fireman
+
 public class Player extends GameObject implements Controllable, Scorable, Displayable{
     private String name;
     private int waterSpray;
     private int lives;
     private int score;
     public int speed = 5;
+    
+    private BufferedImage playerSprite;
 
     public Player(String name) {
         this.name = name;
@@ -32,18 +44,19 @@ public class Player extends GameObject implements Controllable, Scorable, Displa
         return name;
     }
     
-    
+    // Sets some default values for the current player
     public Player() {
         waterSpray = 10;
         lives = 3;
         score = 0;
 
         this.width = 50;
-        this.height = 50;
+        this.height = 70;
         this.positionX = 200;
         this.positionY = 300;
 
         this.edges = new Rectangle(positionX, positionY, width, height);
+        loadSprite();
 }
     
     public boolean sprayWater(){
@@ -54,16 +67,27 @@ public class Player extends GameObject implements Controllable, Scorable, Displa
         return false;
     }
     
-    public void refillWater(){waterSpray = waterSpray;}
-    public void loseLife(){lives--;}
-    public void gainLife(){lives++;}
+    public void refillWater(){
+        waterSpray = waterSpray;
+    }
     
+    public void loseLife(){
+        lives--;
+    }
+    
+    public void gainLife(){
+        lives++;
+    }
     
     
     @Override
     public void draw(Graphics g){
-        g.setColor(Color.BLUE);
-        g.fillRect(positionX, positionY, width, height);
+        if (isActive && playerSprite != null) {
+            g.drawImage(playerSprite, positionX, positionY, width, height, null);
+        } else {
+            g.setColor(Color.BLUE);
+            g.fillRect(positionX, positionY, width, height);
+        }
     }
     @Override
     public void update(){
@@ -108,5 +132,13 @@ public class Player extends GameObject implements Controllable, Scorable, Displa
     
     public String printDetails(){
         return "Details: Player  " + name + " is ready.";
+    }
+    
+    private void loadSprite(){
+        try{
+            playerSprite = ImageIO.read(getClass().getResource("firefighter.png"));
+        }catch (IOException e){
+            System.out.println("Player sprite load failed: " + e.getMessage());
+        }
     }
 }

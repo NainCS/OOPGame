@@ -5,67 +5,64 @@
 package Section3_Edgar;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author Edgar Camacho
  */
-public class Trees extends GameObject{
+
+// Code credit to RyiSnow for loading sprite game objects
+// Video: https://www.youtube.com/watch?v=wT9uNGzMEM4
+
+// Free use tree sprite sources: 
+// https://bdragon1727.itch.io/pixel-tree-all
+
+public class Trees extends GameObject {
     private String typeOfTree;
-    private boolean flammable;
-    private int durability;
-    private boolean onFire;
-    private boolean spreadFire;
 
-    public Trees() {
-        super();
-        this.typeOfTree = "Oak";
-        this.flammable = true;
-        this.durability = 100;
-        this.onFire = false;
-    }
-    
+    private BufferedImage oakTreeSprite;
+    private BufferedImage pineTreeSprite;
+
     public Trees(int x, int y) {
-    super(x, y, 80, 120);
-    this.typeOfTree = "Oak";
-    this.flammable = true;
-    this.durability = 100;
-    this.onFire = false;
-    }   
-
-    public Trees(String typeOfTree, boolean flammable, int durability, boolean onFire, int positionX, int positionY, int witdh, int height) {
-        super(positionX, positionY, witdh, height);
-        this.typeOfTree = typeOfTree;
-        this.flammable = flammable;
-        this.durability = durability;
-        this.onFire = false;
+        super(x, y, 80, 120);
+        this.typeOfTree = "Oak";
+        loadSprites();
     }
-    
-    @Override
-    public void resolveCollision(){
-        if (colliding && isActive) {
-            if (flammable && !onFire) {
-                setOnFire(true);
-            }
-            setColliding(false);
+
+    private void loadSprites() {
+        try {
+            // Loads the tree sprites from the same package directory
+            oakTreeSprite = ImageIO.read(getClass().getResource("oaktree.png"));
+            pineTreeSprite = ImageIO.read(getClass().getResource("pinetree.png"));
+        } catch (IOException e) {
+            System.out.println("Error loading tree sprite: " + e.getMessage());
         }
     }
-    
-    public boolean collideWith(GameObject other) {
-        return this.edges.intersects(other.getEdges());
+
+    @Override
+    public void update() {
+        this.edges.setLocation(positionX, positionY);
     }
-    
-    //fire touches the tree
-    public void lightUp(){
-        if (flammable && !onFire){
-            setOnFire(true);
-        }      
-    }
-    
-    //water in contact a burning tree
-    public void extinguish(){
-        if (onFire) {
-            setOnFire(false);
+
+    @Override
+    public void draw(Graphics g) {
+        if (isActive) {
+            BufferedImage sprite = null;
+            switch (typeOfTree.toLowerCase()) {
+                case "oak":
+                    sprite = oakTreeSprite;
+                    break;
+                case "pine":
+                    sprite = pineTreeSprite;
+                    break;
+            }
+
+            if (sprite != null) {
+                g.drawImage(sprite, positionX, positionY, width, height, null);
+            }
         }
     }
 
@@ -73,114 +70,7 @@ public class Trees extends GameObject{
         return typeOfTree;
     }
 
-    public boolean isFlammable() {
-        return flammable;
-    }
-
-    public int getDurability() {
-        return durability;
-    }
-
-    public boolean isOnFire() {
-        return onFire;
-    }
-
-    public boolean allowSpreadFire() {
-        return spreadFire && onFire;
-    }
-
     public void setTypeOfTree(String typeOfTree) {
         this.typeOfTree = typeOfTree;
     }
-
-    public void setFlammable(boolean flammable) {
-        this.flammable = flammable;
-    }
-
-    public void setDurability(int durability) {
-        this.durability = durability;
-        if (durability <= 0) {
-            setIsActive(false);
-        }
-    }
-
-    public void setOnFire(boolean onFire) {
-        if (flammable) {
-            this.onFire = onFire;
-            this.spreadFire = onFire;
-        }
-    }
-
-    public void setSpreadFire(boolean spreadFire) {
-        this.spreadFire = spreadFire;
-    }
-    
-    @Override
-    public void update(){
-        if (onFire && isActive) {
-            durability -= 1;
-            if (durability <= 0) {
-                setIsActive(false);
-            }
-        }
-        this.edges.setLocation(positionX, positionY);
-    }
-    
-    @Override
-    public void draw(Graphics g){
-        if (isActive) {
-            if (onFire) {
-                g.setColor(Color.RED);
-            }else {
-                switch (typeOfTree.toLowerCase()){
-                    case "Oak":
-                        g.setColor(new Color(0, 100, 0));
-                        break;
-                    case "Pine":
-                        g.setColor(new Color(34, 139, 30));
-                        break;
-                    case "Palm":
-                        g.setColor(new Color(50, 200, 50));
-                        break;
-                    default:
-                        g.setColor(Color.GREEN);
-                }
-            }
-            
-            // Draws the trunk of the tree
-            g.setColor(new Color(140, 70, 20));
-            g.fillRect(positionX + width/3, positionY + height/2, width/3, height/2);
-            
-            // Draws the leaves
-            if (onFire) {
-                g.setColor(Color.ORANGE); 
-            } else {
-                switch (typeOfTree.toLowerCase()) {
-                    case "oak":
-                        g.setColor(new Color(0, 150, 0));
-                        break;
-                    case "pine":
-                        g.setColor(new Color(0, 180, 0));
-                        break;
-                    case "palm":
-                        g.setColor(new Color(100, 255, 100));
-                        break;
-                    default:
-                        g.setColor(new Color(0, 200, 0));
-                }
-            }
-            g.fillOval(positionX, positionY, width, height/2);
-            
-            if (onFire) {
-                g.setColor(Color.RED);
-                int barWidth = (int)(width * (durability / 100.0));
-                g.fillRect(positionX, positionY - 10, barWidth, 5);
-                
-                g.setColor(Color.BLACK);
-                g.drawRect(positionX, positionY - 10, width, 5);
-            }
-        }
-    }
-    
-    
 }

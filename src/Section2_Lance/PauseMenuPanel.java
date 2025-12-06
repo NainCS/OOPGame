@@ -65,6 +65,7 @@ public class PauseMenuPanel extends javax.swing.JPanel {
         });
 
         gamepausedLBL.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        gamepausedLBL.setForeground(new java.awt.Color(255, 255, 255));
         gamepausedLBL.setText("GAME PAUSED");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -79,16 +80,16 @@ public class PauseMenuPanel extends javax.swing.JPanel {
                             .addComponent(resumeBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mainmenuBTN)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(788, 788, 788)
+                        .addGap(786, 786, 786)
                         .addComponent(gamepausedLBL)))
-                .addContainerGap(793, Short.MAX_VALUE))
+                .addContainerGap(795, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(93, 93, 93)
                 .addComponent(gamepausedLBL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                 .addComponent(resumeBTN)
                 .addGap(141, 141, 141)
                 .addComponent(mainmenuBTN)

@@ -36,6 +36,7 @@ public class Level {
         this.extinguishedFires = extinguishedFires;
     }
 
+    // Setters and getters
     public int getLevelNumber() {
         return levelNumber;
     }
@@ -92,7 +93,7 @@ public class Level {
         lives = l;
     }
       
-
+    // Checks if the level is complete
     public boolean isCompleted() {
         return completed;
     }
@@ -101,6 +102,7 @@ public class Level {
         this.completed = completed;
     }
 
+    // Checks if the level was failed
     public boolean isFailed() {
         return failed;
     }
@@ -109,15 +111,17 @@ public class Level {
         this.failed = failed;
     }
 
-
+    // Adds game object to the level
     public void addObject(Object obj) { 
         this.objects.add(obj); 
     }
     
+    // List of objects
     public List<Object> getObjects() {
         return objects;
     }
 
+    // List of fires
     public int[] getFires() {
         return new int[0];
     }
@@ -126,9 +130,11 @@ public class Level {
         return null;
     }
 
-    public void updateLevelState(double deltaSeconds) {
+    // Updates the level state over time and also checks the current
+    // time left and overall game state with conditionals
+    public void updateLevelState(double elapsedSeconds) {
         if (gameTimer > 0) {
-            gameTimer -= deltaSeconds;
+            gameTimer -= elapsedSeconds;
             if (gameTimer <= 0) {
                 failed = true;
             }
